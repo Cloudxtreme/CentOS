@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: chapter.lnmp.xml 576 2013-04-27 07:21:58Z netkiller $ -->
+<chapter id="nginx">
+	<title>Nginx</title>
+	<para></para>
+	<screen>
+groupadd -g 80 www
+adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
+	</screen>
+	<section id="nginx.centos.5">
+		<title>CentOS 5.x</title>
+		<screen>
+		<![CDATA[
+cat > /etc/yum.repos.d/nginx.repo <<EOF
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/5/x86_64/
+gpgcheck=0
+enabled=1
+EOF
+
+
+yum search nginx
+
+yum install -y nginx
+chkconfig nginx on
+service nginx start
+		]]>
+		</screen>
+		<para></para>
+	</section>
+	<section id="nginx.centos.6">
+		<title>CentOS 6.x</title>
+		<screen>
+		<![CDATA[
+cat > /etc/yum.repos.d/nginx.repo <<EOF
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/6/x86_64/
+gpgcheck=0
+enabled=1
+EOF
+
+
+yum search nginx
+
+yum install -y nginx
+chkconfig nginx on
+service nginx start
+
+cp /etc/nginx/nginx.conf{,.original}
+		]]>
+		</screen>
+	</section>
+	<section id="nginx.fastcgi.status">
+		<title>php-fpm status</title>
+		<screen>
+    location ~ ^/(status|ping)$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_param  SCRIPT_FILENAME  $fastcgi_script_name;
+        include        fastcgi_params;
+    }
+		</screen>
+		<screen>
+cat /etc/nginx/conf.d/www.conf
+
+server {
+    listen       80;
+    server_name  www.test.com;
+
+    #charset koi8-r;
+    access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        root   /www;
+        index  index.html index.php;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ~ ^/(status|ping)$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_param  SCRIPT_FILENAME  $fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    location ~ \.php$ {
+        root           html;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  /www$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    location ~ /\.ht {
+        deny  all;
+    }
+}
+		</screen>
+		<para>http://www.mydomain.com/status</para>
+		<screen>
+pool:                 www
+process manager:      dynamic
+start time:           13/Aug/2012:17:07:54 +0800
+start since:          8
+accepted conn:        4
+listen queue:         0
+max listen queue:     0
+listen queue len:     128
+idle processes:       1
+active processes:     1
+total processes:      2
+max active processes: 1
+max children reached: 0
+		</screen>
+		<para>http://www.mydomain.com/ping</para>
+		<screen>
+pong
+		</screen>
+	</section>
+
+</chapter>
+
+<chapter id="fastcgi">
+	<title>FastCGI</title>
+	<section>
+		<title>安装编译器</title>
+
+		<screen>
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+
+yum install gcc gcc-c++ make automake autoconf -y
+yum install curl-devel libmcrypt-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel mhash-devel openssl-devel recode-devel -y
+yum install openldap-devel net-snmp-devel -y
+
+wget http://mirror.services.wisc.edu/mysql/Downloads/MySQL-5.5/MySQL-devel-5.5.25-1.el6.x86_64.rpm
+wget http://mirror.services.wisc.edu/mysql/Downloads/MySQL-5.5/MySQL-shared-5.5.25-1.el6.x86_64.rpm
+wget http://mirror.services.wisc.edu/mysql/Downloads/MySQL-5.5/MySQL-shared-compat-5.5.25-1.el6.x86_64.rpm
+		</screen>
+	</section>
+	<section id="php-5.2.17">
+		<title>php-5.2.17</title>
+		<para>http://hk.php.net/releases/</para>
+		<screen>
+		<![CDATA[
+wget http://php-fpm.org/downloads/php-5.2.17-fpm-0.5.14.diff.gz
+wget http://museum.php.net/php5/php-5.2.17.tar.gz
+
+tar zxvf php-5.2.17.tar.gz
+gzip -cd php-5.2.17-fpm-0.5.14.diff.gz | patch -d php-5.2.17 -p1
+
+cd php-5.2.17
+
+./configure --prefix=/srv/php-5.2.17 \
+--with-config-file-path=/srv/php-5.2.17/etc \
+--with-config-file-scan-dir=/srv/php-5.2.17/etc/conf.d \
+--with-libdir=lib64 \
+--enable-fastcgi \
+--enable-fpm \
+--with-pear \
+--with-curl \
+--with-gd \
+--with-jpeg-dir \
+--with-png-dir \
+--with-freetype-dir \
+--with-zlib-dir \
+--with-iconv \
+--with-mcrypt \
+--with-mysql \
+--with-pdo-mysql \
+--with-mysql-sock=/var/lib/mysql/mysql.sock \
+--with-openssl=shared \
+--with-mhash=shared \
+--with-sqlite=shared \
+--with-pdo-sqlite=shared \
+--with-xsl=shared \
+--with-pear \
+--enable-pcntl \
+--enable-sockets \
+--enable-soap \
+--enable-mbstring \
+--enable-magic-quotes \
+--enable-inline-optimization \
+--enable-gd-native-ttf \
+--enable-zip \
+--enable-xml \
+--enable-ftp \
+--enable-bcmath \
+--enable-calendar \
+--enable-sqlite-utf8 \
+--enable-shmop \
+--enable-dba \
+--enable-wddx \
+--enable-sysvsem \
+--enable-sysvshm \
+--enable-sysvmsg \
+--disable-debug
+
+make && make install
+		]]>
+		</screen>
+		<screen>
+mkdir -p /srv/php-5.2.17/etc/conf.d/
+cp php.ini-recommended /srv/php-5.2.17/etc/php.ini
+cp /srv/php-5.2.17/etc/php-fpm.conf /srv/php-5.2.17/etc/php-fpm.conf.original
+		</screen>
+	</section>
+	<section id="php-5.3.13">
+		<title>php-5.3.13 + MySQL-devel-5.5.25</title>
+
+		<screen>
+wget http://tw.php.net/distributions/php-5.3.13.tar.gz
+		</screen>
+		<para>mysql开发库</para>
+		<screen>
+ls -1
+
+MySQL-devel-5.5.25-1.el6.x86_64.rpm
+MySQL-shared-5.5.25-1.el6.x86_64.rpm
+MySQL-shared-compat-5.5.25-1.el6.x86_64.rpm
+
+rpm -e --nodeps mysql-libs
+yum localinstall MySQL-*
+		</screen>
+		<para># php ./configure bug，  mysql库的地址是/usr/lib/， 让Makefile 使用/usr/lib64中的mysql库</para>
+		<screen>
+ln -s /usr/lib64/mysql/* /usr/lib64/
+ln -s /usr/lib64/libmysql* /usr/lib/
+
+还可以使用 --with-libdir=lib64 指定目录
+		</screen>
+		<screen>
+		<![CDATA[
+tar zxvf php-5.3.13.tar.gz
+cd php-5.3.13
+
+./configure --prefix=/srv/php-5.3.13 \
+--with-config-file-path=/srv/php-5.3.13/etc \
+--with-config-file-scan-dir=/srv/php-5.3.13/etc/conf.d \
+--with-libdir=lib64 \
+--enable-fpm \
+--with-fpm-user=www \
+--with-fpm-group=www \
+--with-pear \
+--with-curl \
+--with-gd \
+--with-jpeg-dir \
+--with-png-dir \
+--with-freetype-dir \
+--with-zlib-dir \
+--with-iconv \
+--with-mcrypt \
+--with-mysql \
+--with-pdo-mysql \
+--with-mysql-sock=/var/lib/mysql/mysql.sock \
+--with-xmlrpc=shared \
+--with-openssl=shared \
+--with-mhash=shared \
+--with-sqlite=shared \
+--with-pdo-sqlite=shared \
+--with-xsl=shared \
+--with-pear \
+--enable-sockets \
+--enable-soap \
+--enable-mbstring \
+--enable-magic-quotes \
+--enable-inline-optimization \
+--enable-gd-native-ttf \
+--enable-zip \
+--enable-xml \
+--enable-ftp \
+--enable-bcmath \
+--enable-calendar \
+--enable-sqlite-utf8 \
+--enable-shmop \
+--enable-dba \
+--enable-wddx \
+--enable-sysvsem \
+--enable-sysvshm \
+--enable-sysvmsg \
+--disable-debug
+
+make && make install
+		]]>
+		</screen>
+		<screen>
+--with-snmp=shared \
+		</screen>
+		<screen>
+ln -s /srv/php-5.3.13 /srv/php
+cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+chmod 755 /etc/init.d/php-fpm
+chkconfig --add php-fpm
+chkconfig php-fpm on
+
+cp /srv/php/etc/php-fpm.conf.default /srv/php/etc/php-fpm.conf
+cp php.ini-production /srv/php/etc/php.ini
+		</screen>
+		<para>php-fpm.conf</para>
+		<screen>
+# grep -v ';' /srv/php/etc/php-fpm.conf | grep -v "^$"
+[global]
+pid = run/php-fpm.pid
+error_log = log/php-fpm.log
+[www]
+listen = 127.0.0.1:9000
+
+user = www
+group = www
+pm = dynamic
+pm.max_children = 2048
+pm.start_servers = 20
+pm.min_spare_servers = 5
+pm.max_spare_servers = 35
+
+pm.max_requests = 500
+
+chkconfig --add php-fpm
+		</screen>
+	</section>
+
+	<section id="php-5.4.8">
+		<title>php-5.4.8</title>
+		<para>mysql开发库</para>
+		<screen>
+ls -1
+
+MySQL-devel-5.5.25-1.el6.x86_64.rpm
+MySQL-shared-5.5.25-1.el6.x86_64.rpm
+MySQL-shared-compat-5.5.25-1.el6.x86_64.rpm
+
+rpm -e --nodeps mysql-libs
+yum localinstall MySQL-*
+		</screen>
+		<screen>
+		<![CDATA[
+tar zxvf php-5.4.8.tar.gz
+cd php-5.4.8
+
+./configure --prefix=/srv/php-5.4.8 \
+--with-config-file-path=/srv/php-5.4.8/etc \
+--with-config-file-scan-dir=/srv/php-5.4.8/etc/conf.d \
+--enable-fpm \
+--with-fpm-user=www \
+--with-fpm-group=www \
+--with-curl \
+--with-gd \
+--with-jpeg-dir \
+--with-png-dir \
+--with-freetype-dir \
+--with-zlib-dir \
+--with-iconv \
+--with-mcrypt \
+--with-mysql \
+--with-mysqli=/usr/bin/mysql_config \
+--with-pdo-mysql \
+--with-mysql-sock=/var/lib/mysql/mysql.sock \
+--with-openssl=shared \
+--with-mhash=shared \
+--with-xsl=shared \
+--with-recode=shared \
+--with-pear \
+--enable-sockets \
+--enable-soap \
+--enable-mbstring \
+--enable-gd-native-ttf \
+--enable-zip \
+--enable-xml \
+--enable-bcmath \
+--enable-calendar \
+--enable-shmop \
+--enable-dba \
+--enable-wddx \
+--disable-debug
+
+make && make install
+		]]>
+		</screen>
+		<screen>
+mkdir -p /srv/php-5.4.8/etc/conf.d
+cp php.ini-* /srv/php-5.4.8/etc/
+cp /srv/php-5.4.8/etc/php.ini-development /srv/php-5.4.8/etc/php.ini
+cp /srv/php-5.4.8/etc/php-fpm.conf.default /srv/php-5.4.8/etc/php-fpm.conf
+cp /srv/php-5.4.8/etc/pear.conf{,.original}
+cp ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+chmod +x /etc/init.d/php-fpm
+
+ln -s /srv/php-5.4.8/ /srv/php
+		</screen>
+		<section>
+			<title>php-fpm.conf</title>
+			<para>php-fpm.conf</para>
+			<screen>
+			<![CDATA[
+vim /srv/php-5.4.8/etc/php-fpm.conf <<end > /dev/null 2>&1
+:25,25s/;//
+:wq
+end
+			]]>
+			</screen>
+			<screen>
+# grep -v '^;' /srv/php-5.4.8/etc/php-fpm.conf | grep -v '^$'
+[global]
+pid = run/php-fpm.pid
+
+rlimit_files = 4096
+
+[www]
+user = www
+group = www
+listen = 127.0.0.1:9000
+
+pm = dynamic
+pm.max_children = 512
+pm.start_servers = 2
+pm.min_spare_servers = 1
+pm.max_spare_servers = 3
+
+pm.status_path = /status
+
+ping.path = /ping
+ping.response = pong
+access.format = "%R - %u %t \"%m %r%Q%q\" %s %f %{mili}d %{kilo}M %C%%"
+
+slowlog = log/$pool.log.slow
+			</screen>
+		</section>
+		<section>
+			<title>php.ini-development</title>
+			<para>php.ini</para>
+			<screen>
+			<![CDATA[
+vim /srv/php-5.4.8/etc/php.ini <<EOF > /dev/null 2>&1
+:%s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.4.8/lib/php:/srv/php-5.4.8/share"!
+:%s:extension_dir = "./":extension_dir = "/srv/php-5.4.8/lib/php/extensions":
+:%s/memory_limit = 128M/memory_limit = 16M/
+:%s$;open_basedir = $open_basedir = /www/:/tmp/:/srv/php-5.4.8/lib/php/:/srv/php-5.4.8/bin/$
+:%s/upload_max_filesize = 2M/upload_max_filesize = 8M/
+:%s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
+:%s$;date.timezone =$date.timezone = Asia/Hong_Kong$
+:%s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:wq
+EOF
+			]]>
+			</screen>
+		</section>
+	</section>
+	<section id="php.extension">
+		<title>Extension 扩展安装</title>
+		<section>
+			<title>APC</title>
+			<screen>
+			<![CDATA[
+pecl install apc
+			]]>
+			</screen>
+			<screen>
+			<![CDATA[
+cat > /srv/php-5.4.8/etc/conf.d/apc.ini <<EOF
+extension=apc.so
+EOF
+			]]>
+			</screen>
+		</section>
+
+		<section>
+			<title>Xdebug</title>
+			<screen>
+			<![CDATA[
+pecl install xdebug
+			]]>
+			</screen>
+			<screen>
+			<![CDATA[
+cat > /srv/php-5.4.8/etc/conf.d/xdebug.ini <<EOF
+[Zend Modules]
+zend_extension=/srv/php-5.4.8/lib/php/extensions/no-debug-non-zts-20100525/xdebug.so
+[Xdebug]
+xdebug.profiler_enable = on
+xdebug.trace_output_dir = "/tmp/xdebug"
+xdebug.profiler_output_dir = "/tmp/xdebug"
+EOF
+			]]>
+			</screen>
+			<!-- extension=xdebug.so -->
+		</section>
+	</section>
+	<section id="php.path">
+		<title>PATH</title>
+		<screen>
+		<![CDATA[
+cat >> /etc/profile	<<EOF
+export PATH=$PATH:/srv/php/bin
+EOF
+
+cat >> .bashrc	<<EOF
+export PATH=$PATH:/srv/php/bin
+EOF
+		]]>
+		</screen>
+	</section>
+	<section id="php.test">
+		<title>Test</title>
+		<section>
+			<title>pdo_mysql</title>
+			<para>pdo_mysql测试代码</para>
+			<screen>
+			<![CDATA[
+<?php
+$dbms   ="mysql";
+$db_host="192.168.2.10";
+$db_name="example";
+$db_user="www";
+$db_pwd="www";
+$dsn="$dbms:host=$db_host;dbname=$db_name";
+try {
+    $start   =   microtime();
+    $dbh=new PDO($dsn,$db_user,$db_pwd);
+#    $dbh->query("select * from files order by id desc limit 10″);
+
+    foreach($dbh->query('SELECT id, username from members limit 10') as $row) {
+        print_r($row);
+    }
+    $dbh = null;
+
+    $end   =   microtime();
+    $starttime   =   explode(" ",   $start);
+    $endtime   =   explode(" ",   $end);
+    $exectime=$endtime[0]+$endtime[1]-$starttime[0]-$starttime[1];
+    echo   "执行时间为："   .   $exectime;
+}
+catch (PDOException $e) {
+    print("Error:".$e->getMessage());
+}
+?>
+			]]>
+			</screen>
+		</section>
+
+	</section>
+</chapter>

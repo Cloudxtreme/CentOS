@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!ENTITY part.installation.xml		SYSTEM "part.installation.xml">
+	<!ENTITY chapter.linux.xml			SYSTEM "chapter.linux.xml">
+	<!ENTITY chapter.network.xml		SYSTEM "chapter.network.xml">
+	<!ENTITY chapter.ntpd.xml			SYSTEM "chapter.ntpd.xml">
+	<!ENTITY chapter.lamp.xml			SYSTEM "chapter.lamp.xml">
+	<!ENTITY chapter.lnmp.xml			SYSTEM "chapter.lnmp.xml">
+	<!ENTITY chapter.backup.xml 		SYSTEM "chapter.backup.xml">
+	<!ENTITY chapter.pkgs.xml			SYSTEM "chapter.pkgs.xml">
+	<!ENTITY chapter.rsync.xml			SYSTEM "chapter.rsync.xml">
+	<!ENTITY chapter.database.xml		SYSTEM "chapter.database.xml">

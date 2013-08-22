@@ -1,0 +1,401 @@
+<chapter id="services">
+	<title>Services</title>
+	<screen>
+[ ] NetworkManager   自动在多种网络连接中进行转换，如果你的电脑有Wireless WiFi 和 Ethernet多种网络连接类型的话，可以选择开启。
+[ ] acpid            （Advanced Configuration and Power Interface）是为替代传统的APM电源管理标准而推出的新型电源管理标准。通常笔记本电脑需要启动电源进行管理。
+[*] anacron          自动化运行任务守护进程
+[*] atd              自动化运行任务守护进程
+[ ] auditd           审核信息，将消息写入控制台以及 audit_warn 电子邮件别名。用于存放内核生成的系统审查记录，这些记录会被一些程序使用。特别是对于SELinux用户来说。
+[ ] autofs           自动挂载/卸载文件系统服务，可以自动挂载想访问但还未挂载的文件系统,自动卸载长期不访问的文件系统,自动安装管理进程automount，与NFS 相关，依赖于NIS
+[ ] avahi-daemon     Zeroconf service discovery守护进程，Avahi是zeroconf协议的实现。它可以在没有DNS服务的局域网里发现基于zeroconf协议的设备和服务。它跟mDNS一样。除非你有兼容的设备或使用 zeroconf 协议的服务，否则就可以关闭。
+[ ] avahi-dnsconfd   /etc/avahi/dnsconf.action脚本守护进程
+[ ] bluetooth        蓝牙
+[ ] conman           控制台管理
+[ ] cpuspeed         监测系统空闲百分比，降低或加快CPU时钟速度和电压
+[*] crond            一个传统的UNIX程序crontab，可以周期地运行用户调度的任务。
+[ ] cups             通用UNIX打印守护进程，（Common UNIX Printing System）公共UNIX打印支持，为Linux提供打印功能。 安装打印机时需要的服务。
+[ ] dnsmasq          Dns cache server守护进程
+[ ] dund             蓝牙拨号网络
+[ ] firstboot        安装完之后的用户配置向导，用于第一次设置系统
+[ ] gpm              为文本模式下的Linux程序提供鼠标支持、拷贝、粘贴操作、弹出式菜单
+[ ] haldaemon        硬件监控系统
+[ ] hidd             蓝牙H.I.D.服务器
+[ ] httpd            Apache服务器
+[ ] ip6tables        防火墙守护进程
+[*] iptables         防火墙守护进程
+[ ] irda             红外端口守护进程
+[*] irqbalance       多系统处理器环境下的系统中断请求进行负载平衡，单CPU无用
+[ ] kudzu            硬件自动检测程序，如不增加新硬件，可以关闭
+[ ] lvm2-monitor     LVM2 mirror devices守护进程
+[ ] mcstrans         SELinux Context Translation System Daemon
+[ ] mdmonitor        RAID相关设备的守护程序
+[ ] mdmpd            RAID相关设备的守护程序
+[*] messagebus       事件监控服务，在必要时向所有用户发送广播信息
+[ ] microcode_ctl    可编码以及发送新微代码到内核以更新Intel IA32系列处理器守护进程
+[ ] multipathd       Manage device-mapper multipath devices
+[ ] netconsole       Initializes network console logging
+[ ] netfs            安装和卸载NFS、SAMBA和NCP网络文件系统
+[ ] netplugd         服务监控网络界面,根据信号关闭或启动它,用于手提电脑
+[*] network          激活已配置网络接口的脚本程序
+[ ] nfs              网络文件系统守护进程
+[ ] nfslock          NFS文件锁定功能
+[ ] nscd             密码与群查找服务
+[ ] ntpd             网络时间同步
+[ ] oddjobd
+[ ] pand             蓝牙个人区域网络
+[ ] pcscd            智能卡支持
+[ ] portmap          用来支持RPC连接，RPC被用于NFS以及NIS 等服务
+[ ] psacct           进程审计守护进程
+[ ] rawdevices		 rawdevices	to block devices。Oracle数据库使用
+[ ] rdisc            discovers routers守护进程
+[ ] readahead_early  开机内存载入优化
+[ ] readahead_later  开机内存载入优化
+[ ] restorecond      SELinux相关联
+[ ] rpcgssd          manages RPCSEC GSS contexts for the NFSv4 server
+[ ] rpcidmapd        rpcidmapd for NFSv4 that maps user names to UID and GID nu
+[ ] rpcsvcgssd       rpcsvcgssd manages RPCSEC GSS contexts for the NFSv4 server
+[ ] saslauthd        使用SASL的认证守护进程
+[*] sendmail         邮件服务器sendmail守护进程
+[*] smartd           监控硬盘故障
+[*] sshd             OpenSSH服务器守护进程
+[*] syslog           系统日志
+[ ] winbind          用于Samba服务器
+[ ] wpa_supplicant   无线设备支持
+[ ] xfs              X Window字型服务器守护进程，为本地和远程X服务器提供字型集
+[ ] ypbind           为NIS客户机激活ypbind服务进程
+[ ] yum-updatesd	 RPM操作系统自动升级和软件包管理守护进程
+	</screen>
+	<!--
+	<screen>
+
+在集群节点上使用Red Hat 开关脚本
+这一节包括在一个普通Red Hat系统上使用的开关脚本的描述，以及一个关于如何通过使用开关脚本启动服务的讨论，或在一个Linux企业集群里可以被使用。注意在你的系统上可能没有所有这些脚本，因为在Red Hat发行版中是不同的或因为你还没有安装这个服务。
+aep1000
+支持快速加密处理卡以加速安全套接字层（SSL）加密，在本书中不用于建立集群。
+anacron
+与cron和at类似，都是在特定时间、甚至在系统没有连续运行时启动命令的，在Red Hat上，/etc/anacrontab文件列出了每天执行的cron作业的循环常规日志，如果你禁用了它，你将不能再执行日志循环，你的系统磁盘最后将被填满，在第18和19章，我们将描述两个在所有集群节点上不用crond守护进程运行cron作业的方法（crond守护进程运行在一个单一的节点上，远程初始化或在每个集群节点上每天启动一次anacron程序）。
+apmd
+用于高级电源管理，仅当你有一个不间断电源支持(UPS)系统连接到你的系统时，你想让它在出现电源故障时，你的UPS系统电池用光前自动关闭时才需要，在第9章中，我们将看到Heartbeat程序如何通过一个叫做STONITH（shoot the other node in the head）的技术控制给一个设备供应电力。
+arpwatch
+用于保持对ip地址到MAC地址对的跟踪，正常情况下，你不需要这个守护进程，Linux虚拟服务器直接路由集群（在第13章中有描述）必须通过集群负载均衡技术与潜在的地址解析协议（ARP）竞争，但是arpwatch对这个问题没有帮助，并且它也不用在集群节点上。
+atd
+与anacron和cron的使用类似，在特定时间用at命令调度作业，这种调度作业的方法被经常使用，在第18章中，我们将描述如何用Heartbeat、crond守护进程和clustersh脚本为集群建立一个无单点故障批处理调度机制。
+autofs
+用于从NFS服务器自动挂载NFS目录，这个脚本仅在NFS客户端上，以及你想自动挂载和卸载NFS设备时需要启用，在本书集群配置描述部分，你将不需要挂载NFS文件系统，因此就不需要这个服务（尽管使用它可以给你一个强大的灵活的从每个集群节点挂载多个NFS挂载点），避免autofs挂载方案的复杂性，在你的集群节点上只使用一个NFS挂载目录。
+bcm5820
+支持Broadcom Cryponet BCM5820芯片以加速SSL通讯，本书中不使用它。
+crond
+与anacron和atd的使用类似，用于调度作业。在Red Hat系统上，crond守护进程每天启动一次anacron，在第18章中，我们将看到如何用cron和开源Ganglia软件包（或本书光盘中提供的clustersh脚本）建立一个无单点故障批处理作业调度系统，为了控制cron作业在集群中的执行，你可能不想让所有集群节点都运行crond守护进程，而只想让一个节点运行cron守护进程，然后使用本书第二部分描述的技术使其成为一个高可用服务（在本书中描述的集群节点，crond守护进程不是通过init在系统启动时运行的，Heartbeat程序基于/etc/ha.d/haresources文件中的条目启动crond守护进程，cron作业通过由SSH提供的远程shell功能仍然可以在所有集群节点上运行）。
+cups
+通用Unix打印系统，在本书中，我们将使用LPRng替代cups作为集群的打印系统，本章稍后有对lpd脚本的描述。
+firstboot
+用于系统第一次启动时系统配置过程的一部分。
+functions
+包括/etc/init.d目录中其他脚本使用的常规库，不要修改这个脚本，否则你系统上的开关脚本将受到破坏的威胁。
+gpm
+开启它使得在基于文本的控制台中使用鼠标进行剪切和粘贴成为可能，你不应该禁用这个服务，顺便说一下，集群节点通常会连接到一个KVM（键盘/显示器/鼠标）设备，它允许多个服务器共享一个键盘和一个鼠标，由于这些KVM设备的成本，你可能想建立你的不用将它们连接到一个KVM设备的集群节点（它们不用连接键盘和鼠标启动）。
+halt
+用于干净地关闭系统。
+httpd
+用于为一个web服务器启动apache守护进程，即使你不是在建立一个web服务器集群来帮助负载调度器（ldirectord程序）当一个节点应该从集群中移除时做出判断，你可能也想使用httpd，在第15章中有对监视一个并行服务概念的讨论。
+identd
+用于帮助识别谁正连接到你的系统，理论听起来挺好，但是你可能永远不能通过identd免除攻击，实际上，黑客会攻击你系统上的identd守护进程，在LVS-NAT集群中的服务器在发送identd请求回客户端计算机时也有问题，如果可能在你的集群节点上禁用identd。
+ipchains或iptables
+通过ipchains（2.2内核和更早版本）或iptables（2.4内核及更高版本）提供的使用Linux内核控制数据包的能力，在Red Hat系统上的这个脚本运行iptables或ipchains命令，保存在/etc/sysconfig目录中的一个文件中，第2章有更多的信息。
+irda
+用于红外线通讯，本书中建立集群不使用它。
+isdn
+用于集成服务数字网络通讯，本书中不使用它。
+kdcrotate
+用于管理系统上Kerberos安全，第19章对分配用户账号信息有一个讨论。
+keytable
+用于载入键盘表。
+killall
+用于帮助关闭系统。
+kudzu
+在系统启动时探测你的系统中的新硬件，当你在你的系统上改变了硬件配置信息时非常有用，但是增加了请求启动一个集群节点的总体时间，特别当它从KVM设备断开连接时。
+lisa
+LAN信息服务器服务，正常情况下，Linux机器上的用户在与远程主机连接前以及交换信息前，必须知道远程主机的名字或地址，使用lisa，用户可以象windows客户端使用网络邻居那样在网络上查找其他主机，本书不使用这个技术，实际上，如果你正在建立集群这还可能对用户造成干扰（因为LVS-DR集群节点会被这个软件找到）。
+lpd
+这是启动LPRng打印系统的脚本，如果你看不到lpd脚本，你需要安装LPRng软件包，LPRng的最新版本可以在http://www.lprng.com找到，在一个标准的Red Hat安装上，LPRng打印系统将使用/etc/printcap.local文件来创建一个包含打印机列表的/etc/printcap文件，集群节点应该运行lpd守护进程，集群节点将首先假脱机本地的打印作业到它们的本地硬件驱动，然后尝试（基本上是永远）发送打印作业到一个同样运行有lpd守护进程的中心打印假脱机程序，第19章有对LPRng打印系统的讨论。
+netfs
+本书中描述的集群节点需要为锁仲裁连接到一个中心文件服务器（或NAS设备），第16章对NFS有更详细的讨论，正常情况下，集群节点在启动时需要运行这个脚本来收集对与其他集群节点共享的数据文件的访问。
+network
+启动以太网接口，将你的系统连接到集群网络和NAS设备，Red Hat网络配置文件存储在/etc/sysconfig目录中，第5章中，我们将描述当你完成克隆后对每个集群节点进行正确的网络配置的文件，这个脚本在启动时使用这些配置文件在每个集群节点上配置你的网络接口卡和网络路由表[6]。
+nfs
+正常情况下，集群节点不会充当NFS服务器，因此不需要运行这个脚本[7]。
+nfslock
+Linux内核将启动恰当的内核级的NFS锁机制（rpc.lockd是一个内核线程叫做klockds）和rpc.statd确保合适的NFS文件锁，然而，是NFS客户端的集群节点可以在启动时运行这个脚本，不会有什么不良影响（内核在需要它时将总是运行lock守护进程，无论这个脚本在启动时是否运行了），查看第16章获取更多关于NFS锁仲裁的信息。
+nscd
+通过缓存信息帮助加速名称服务查找（如主机名），建立本书描写的集群，不要求使用nscd。
+ntpd
+这个脚本启动网络时间协议守护进程，当你在/etc/ntp.conf文件中配置网络时间协议服务器的名字或ip地址时，你可以在所有集群节点上运行这个脚本保持它们的时钟同步，当系统时钟不处于同一直线时，集群节点开始为时间进行争论，但是运行ntpd服务后将帮助预防这个问题，在ntpd守护进程开始摆动或调整它使其与NTP服务器时钟保存同步前，系统时钟必须是精确无误的，当使用一个分布式文件系统如NFS时，存储在NFS服务器上的时间与每个集群节点的时间应该保持同步（查看第16章获取更多信息），也要注意硬件时钟的值与系统时间可能也会不同，为了设置你系统的硬件时钟，使用hwclock命令（如果硬件时钟与系统时间相差太大也会发生问题）。
+pcmcia
+正常情况下用于笔记本电脑识别和配置pcmcia设备，本书中不使用它。
+portmap
+用于NFS和NIS管理RPC连接，nfs锁机制正常操作必不可少的，第16章有详细的描述。
+pppoe
+用于ADSL连接，如果你没有ADSL，禁用这个脚本。
+pxe
+一些无盘集群（或无盘工作站）将使用PXE协议启动，基于PXE服务器提供的信息定位并运行操作系统（PXE代表预启动执行环境），运行这个服务将使你的Linux机器充当一个PXE服务器，然而，建立一个无盘集群不属于本书的范畴[8]。
+random
+帮助你的系统为许多加密算法产生更好的随机数，在集群中用SSH加密数据的方法将在第14章中描述。
+rawdevices
+用于内核管理设备。
+rhnsd
+连接到Red Hat服务器查看是否有新的软件可用，你想在你的集群节点上如何升级软件将决定你是否使用这个服务，一些系统管理员一想到在生产服务器上自动升级软件就打抖，使用集群，比你在一个单一的集群节点上升级软件更有优势，先测试，然后决定是否升级所有节点，如果在这个单一节点（在术语SystemImager中叫做黄金客户端）上升级成功了，可以使用在第5章描述的克隆进程将其复制到所有集群节点上（在本章查看updateclient命令如何升级一个节点，当它加入生产环境后）。
+rstatd
+启动rpc.rstatd，它允许远程用户使用rup命令监视系统活动，本书中描述的系统监视将使用不需要这个服务的Ganglia软件包和Mon监视软件包。
+rusersd
+让其他人查看谁登陆到了这台机器，在一个集群环境中可能有用，但是本书将不描述它。
+rwall
+让远程用户使用rwall命令在这台机器上显示消息，这在你的集群中可能是也可能不是一个有用的特性，这个以及下一个守护进程应该只在运行在一个信任网络上的防火墙之后的系统上启动。
+rwhod
+让远程用户查看谁登陆进来了。
+saslauthd
+用于提供简单认证和安全层（SASL）认证（正常情况下与协议如SMTP和POP一起使用），用SASL认证建立服务超出了本书的范围，建立本书中描述的集群，不需要这个服务。
+sendmail
+你会允许远程用户直接向集群节点发送邮件消息吗？例如，一个邮件队列处理系统要求每个集群节点都接收邮件序列以便平衡入站邮件序列的负载，如果这样，你将需要在所有集群节点上启用（并配置）这个服务，集群节点上的sendmail配置将在第19章讨论。
+single
+用于管理运行级别（通过init进程）。
+smb
+提供一个使用软件包samba对windows客户端提供如文件共享和打印共享的服务的方法，这样配置一个集群支持pc客户端超出了本书的范围。
+snmpd
+用于管理简单网络管理协议（SNMP），这个守护进程将与Mon监视软件包一起使用，监视集群节点的健康情况，第17章对此有详细的描述，你几乎无疑想在你的集群上使用SNMP，如果你正在建立一个公共web服务器，因为安全原因你可能想禁用这个守护进程（当你在一个服务器上运行snmpd时，就为黑客增加了攻破你系统的途径），在实践中，你可能发现在/etc/inittab文件中将其设为一个respawn服务比简单地在系统启动时启动这个守护进程要可靠得多（查看本章前面的例子，如果你使用这个方法，你将需要禁用开关脚本以便系统不能尝试启动两次snmpd）。
+snmptrapd
+SNMP几乎可以在所有网络连接设备上配置发送陷阱或警告给一个SNMP陷阱主机，SNMP陷阱主机运行监视软件记录这些陷阱，并提供一些机制警告人们有些事情出错了，运行这个守护进程将使你的Linux服务器成为一个SNMP陷阱服务器，它可能是位于集群外的一个系统，如集群节点管理器[9]，SNMP陷阱的限制是它们可能尝试用一个陷阱或警告，消息来指出一个严重的问题，并且这个消息可能会丢失（SNMP陷阱服务器可能会错过其中一个或仅仅有机会听到警告），本书描述的方法是使用一个位于集群外的服务器（运行着Mon软件包）来轮询存储在每个集群节点上的SNMP信息，当某个阀值被超出或节点不响应时产生一个警告（查看第17章）。
+squid
+提供一个代理服务器缓存web请求（包括其他事情），本书描述的集群不使用squid。
+sshd
+Open SSH守护进程，我们将使用这个服务同步集群内服务器上的文件以及为本书中描述的系统克隆方法（尽管使用SSH进行系统克隆不是必要的）。
+syslog
+syslog守护进程基于/etc/syslog.conf文件中的配置条目记录来自运行该进程和程序错误消息，日志文件通过anacron守护进程保持无限地增长，它通过crontab文件中条目的一个条目启动（通过cron），查看日志循环man手册，注意你可以让所有集群节点发送它们的syslog条目到一个独立的主机，通过在/etc/syslog.conf文件中使用@hostname语法创建配置条目来实现（查看syslog的man手册获取例子），然而，如果网络因为传输错误消息而超载的话，这个记录错误日志的方法引起整个集群变慢，本书中，我们将使用默认的syslog方法发送错误日志到一个本地附加磁盘驱动器来避免这个潜在的问题（我们将为集群上严重的问题使用Mon监视软件包进行监视，本书第四部分对此有描述）。
+tux
+代替Apache httpd守护进程，你可以选择运行Tux web服务器，这个web服务器试图引入性能改善超过Apache web服务器守护进程，本书将只描述如何安装和配置Apache。
+winbind
+提供使用windows服务器上的账号认证用户的方法，本书中不使用这种认证方法建立集群，查看第19章有另外的可选的方法，本章稍后有对ypbind开关脚本的讨论。
+xfs
+X字体服务器，如果你正在使用基于文本的终端（这个假设贯穿本书）管理你的服务器（或从一个远程机器telnet/ssh），在你的集群节点上将不需要这个服务，在你的集群节点上不安装任何X应用程序可以减少系统启动时间和磁盘空间。第20章提供了一个如何使用运行在瘦客户端上的X应用程序访问集群内的服务的例子。
+xinetd
+启动如FTP和telnet的服务，许多守护进程都是通过xinetd启动的，注意在一个集群配置中，你可能需要通过xinetd（xinetd不能拒绝一个客户端计算机对服务的请求）为服务连接允许一个不定的数字，在/etc/xinetd.conf配置文件中加上一行instances = UNLIMITED（要查看你改变配置文件是否有效你需要重启xinetd或用kill命令向它发送一个SIGHUP信号）。
+ypbind
+只用于NIS客户端机器，如果你没有NIS服务器[12]，你不需要这个服务，给所有集群节点分配集群密码和账号信息的一个方法是运行一个LDAP服务器。然后使用NIS系统向所有集群节点发送账号信息，这可以通过一个商业许可程序叫做NIS/LDAP网关（守护进程叫做yplapd）的PADL（http://www.padl.com/）软件来实现，在你的LDAP服务器上使用NIS/LDAP网关允许你创建简单的cron脚本，用它复制所有在LDAP数据库外的用户账号，然后将它们安装到每个集群节点的本地/etc/passwd文件中，然后，你可以使用/etc/nsswitch.conf文件在/etc/passwd中指定用户认证程序，这样避免在网络上发送密码，减少集群上LDAP（或NIS）服务器由于故障而产生的影响，查看/etc/nsswitch.conf文件中例子以及更多的信息。修改/etc/xinetd.conf文件通过系统立即被确认（它们不需要重启）。
+注意：这些条目不依赖/etc/shadow文件，但是将替代/etc/passwd文件中包括的加密密码。
+cron作业创建本地passwd条目仅需要包括象下面这样的一行：
+ypcat passwd >/etc/passwd
+这个命令将使用NIS（或LDAP）账号条目覆盖系统中/etc/passwd中的所有条目，因此你将需要在LDAP服务器上确保创建了正常的系统账号（特别是root用户账号）。
+一个更好的将修改应用到每个服务器的方法是使用patch和diff命令，例如：一个做下面事情的shell脚本：
+ypcat passwd > /tmp/passwd
+diff -e /etc/passwd /tmp/passwd > /tmp/passwd.diff
+patch -be /etc/passwd /tmp/passwd.diff
+这些命令使用ed编辑器（-e选项）修改passwd文件中被改动过的条目，另外，这个脚本应该检查确保NIS服务器是在正常操作（如果ypcat命令没有返回任何条目，本地的/etc/passwd文件将被擦除掉，除非你的脚本检查了这个条件并放弃），这样使得程序安全地运行不影响系统正常操作，（再说一次，注意这个方法不使用/etc/shadow文件存储密码信息）除passwd数据库外，类似的命令应该可以用于group和hosts文件。
+如果你使用这个方法来分配用户账号，运行yplapd的LDAP服务器（或NIS服务器）可能会崩溃，但用户将仍然可以登陆到集群，如果账号被添加或被改动，所有集群节点将看不到这些改动，直到脚本更新的了本地的/etc/passwd，group和hosts文件。
+当使用这个配置时，你将需要让ypbind守护进程运行在所有集群节点上，你也将需要为客户端设置域名（在Red Hat系统上，在/etc/sysconfig/network文件中实现）。
+yppasswd
+仅仅在主NIS服务器上需要（在运行NIS/LDAP网关软件的LDAP服务器上不需要），集群节点正常情况下总是将yppasswd禁用掉。
+ypserv与yppasswd一样。
+[5]大多数服务器硬件不支持这个。
+	</screen>
+	 -->
+	<section id="chkconfig">
+		<title>chkconfig</title>
+		<screen>
+chkconfig acpid off
+		</screen>
+		<screen>
+[root@development ~]# chkconfig --add mysqld 		[在服务清单中添加mysql服务]
+[root@development ~]# chkconfig mysqld on			[设置mysql服务开机启动]
+[root@development ~]# chkconfig --list mysqld		[设置mysql启动级别]
+mysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off
+		</screen>
+		<screen>
+chkconfig --level 3 mysqld on
+chkconfig --level 3 mysqld off
+		</screen>
+	</section>
+	<section id="xinetd">
+		<title>xinetd.d</title>
+		<screen>
+# yum -y install xinetd
+		</screen>
+		<section id="tftpd">
+			<title>tftpd</title>
+			<screen>
+# yum install -y tftp-server tftp
+			</screen>
+			<para>/etc/xinetd.d/tftp</para>
+			<screen>
+# vim /etc/xinetd.d/tftp
+# default: off
+# description: The tftp server serves files using the trivial file transfer \
+#       protocol.  The tftp protocol is often used to boot diskless \
+#       workstations, download configuration files to network-aware printers, \
+#       and to start the installation process for some operating systems.
+service tftp
+{
+        socket_type             = dgram
+        protocol                = udp
+        wait                    = yes
+        user                    = root
+        server                  = /usr/sbin/in.tftpd
+        server_args             = -s /tftpboot
+        disable                 = yes
+        per_source              = 11
+        cps                     = 100 2
+        flags                   = IPv4
+}
+			</screen>
+			<para>disable = yes 改为 disable = no</para>
+			<screen>
+mkdir /tftpboot
+/etc/init.d/xinetd restart
+			</screen>
+			<section id="atftp-server">
+				<title>atftp-server</title>
+				<screen>
+# yum install -y atftp-server atftp
+				</screen>
+				<para>/etc/xinetd.d/tftp</para>
+				<screen>
+# cat /etc/xinetd.d/tftp
+# default: off
+# description: The tftp server serves files using the trivial file transfer protocol. The tftp protocol is often used to boot diskless workstations, download configuration files to network-aware printers, and to start the installation process for some operating systems.
+service tftp
+{
+    disable         = no
+    socket_type     = dgram
+    protocol        = udp
+    wait            = yes
+    user            = root
+    server          = /usr/sbin/in.tftpd
+    server_args     = /tftpboot
+    per_source      = 11
+    cps             = 100 2
+    flags           = IPv4
+}
+				</screen>
+				<para>atftp-server 是一个可以不依赖xinetd的tftp服务器</para>
+				<screen>
+				</screen>
+			</section>
+		</section>
+		<section id="rsync">
+			<title>rsync</title>
+			<screen>
+# vim /etc/xinetd.d/rsync
+# default: off
+# description: The rsync server is a good addition to an ftp server, as it \
+#       allows crc checksumming etc.
+service rsync
+{
+        disable = no
+        socket_type     = stream
+        wait            = no
+        user            = root
+        server          = /usr/bin/rsync
+        server_args     = --daemon
+        log_on_failure  += USERID
+}
+
+			</screen>
+		</section>
+		<section id="rsh">
+			<title>rshd</title>
+			<para>/etc/xinetd.d/rsh</para>
+			<screen>
+# cat  /etc/xinetd.d/rsh
+# default: on
+# description: The rshd server is the server for the rcmd(3) routine and, \
+#	consequently, for the rsh(1) program.  The server provides \
+#	remote execution facilities with authentication based on \
+#	privileged port numbers from trusted hosts.
+service shell
+{
+	socket_type		= stream
+	wait			= no
+	user			= root
+	log_on_success		+= USERID
+	log_on_failure 		+= USERID
+	server			= /usr/sbin/in.rshd
+	disable			= no
+}
+			</screen>
+			<para>访问权限配置</para>
+			<screen>
+# cat /etc/hosts.allow
+#
+# hosts.allow	This file describes the names of the hosts which are
+#		allowed to use the local INET services, as decided
+#		by the '/usr/sbin/tcpd' server.
+#
+in.rshd : your.example.com 192.168.0.1
+			</screen>
+			<screen>
+# cat /etc/hosts.deny
+#
+# hosts.deny	This file describes the names of the hosts which are
+#		*not* allowed to use the local INET services, as decided
+#		by the '/usr/sbin/tcpd' server.
+#
+# The portmap line is redundant, but it is left to remind you that
+# the new secure portmap uses hosts.deny and hosts.allow.  In particular
+# you should know that NFS uses portmap!
+all : all
+			</screen>
+			<para>访问主机设置</para>
+			<screen>
+# cat ~/.rhosts
+your.example.com user
+192.168.0.1	user
+			</screen>
+		</section>
+	</section>
+	<section id="rpcinfo">
+		<title>rpcinfo</title>
+		<screen>
+# rpcinfo -p 192.168.187.75
+   program vers proto   port
+    100000    2   tcp    111  portmapper
+    100000    2   udp    111  portmapper
+    100024    1   udp    697  status
+    100024    1   tcp    700  status
+    100011    1   udp    864  rquotad
+    100011    2   udp    864  rquotad
+    100011    1   tcp    867  rquotad
+    100011    2   tcp    867  rquotad
+    100003    2   udp   2049  nfs
+    100003    3   udp   2049  nfs
+    100003    4   udp   2049  nfs
+    100003    2   tcp   2049  nfs
+    100003    3   tcp   2049  nfs
+    100003    4   tcp   2049  nfs
+    100021    1   udp  32778  nlockmgr
+    100021    3   udp  32778  nlockmgr
+    100021    4   udp  32778  nlockmgr
+    100021    1   tcp  35837  nlockmgr
+    100021    3   tcp  35837  nlockmgr
+    100021    4   tcp  35837  nlockmgr
+    100005    1   udp    880  mountd
+    100005    1   tcp    883  mountd
+    100005    2   udp    880  mountd
+    100005    2   tcp    883  mountd
+    100005    3   udp    880  mountd
+    100005    3   tcp    883  mountd
+		</screen>
+	</section>
+	<section id="selinux">
+		<title>SELINUX</title>
+		<para>禁用SElinux编辑/etc/selinux/config，修改如下内容：</para>
+		<screen>
+SELINUX=disabled
+		</screen>
+		<para>使用命令</para>
+		<screen>
+getenforce
+setenforce 0
+		</screen>
+		<screen>
+lokkit --selinux=disabled
+		</screen>
+	</section>
+</chapter>

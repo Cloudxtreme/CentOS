@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: chapter.network.xml 517 2013-01-29 10:08:31Z netkiller $ -->
+<chapter id="network">
+	<title>常用网络服务</title>
+	&chapter.rsync.xml;
+	&chapter.ntpd.xml;
+	<section id="bandwidthd">
+		<title>bandwidthd</title>
+		<screen>
+		<![CDATA[
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+
+yum search bandwidthd
+yum install bandwidthd
+
+vim /etc/bandwidthd.conf
+
+subnet 0.0.0.0 0.0.0.0
+or
+subnet 0.0.0.0/0
+
+/etc/init.d/bandwidthd start
+		]]>
+		</screen>
+	</section>
+
+	<section id="samba">
+		<title>samba</title>
+		<screen>
+		<![CDATA[
+yum install samba -y
+
+cp /etc/samba/smb.conf /etc/samba/smb.conf.original
+
+cat >> /etc/samba/smb.conf <<EOF
+
+##########################
+[tmp]
+   comment = tmp folder
+   writable = yes
+   locking = yes
+   path = /tmp
+   public = yes
+
+[www]
+   comment = www development
+   writable = yes
+   locking = yes
+   path = /www
+   public = yes
+
+EOF
+
+smbpasswd -a www
+
+service smb start
+		]]>
+		</screen>
+	</section>
+
+	<section id="openssh">
+		<title>OpenSSH</title>
+		<orderedlist>
+			<title>OpenSSH 安全配置</title>
+			<listitem><para>禁止 root 用户登录</para></listitem>
+			<listitem><para>禁止使用密码登录，使用证书登录</para></listitem>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+		</orderedlist>
+		<para>history 安装,避免其他用户从history获得不安全的信息</para>
+
+		<section>
+			<title>history 安全</title>
+			<screen>
+ln -s /dev/null .bash_history
+ln -s /dev/null .mysql_history
+			</screen>
+		</section>
+		<section>
+			<title>sshd_config</title>
+			<para>sshd_config 禁止root登陆</para>
+			<screen>
+			<![CDATA[
+vim /etc/ssh/sshd_config <<end > /dev/null 2>&1
+:%s/#PermitRootLogin yes/PermitRootLogin no/
+:%s/#AuthorizedKeysFile/AuthorizedKeysFile/
+:%s/#UseDNS yes/UseDNS no/
+:wq
+end
+			]]>
+			</screen>
+			<screen>
+/etc/init.d/sshd reload
+			</screen>
+		</section>
+		<section>
+			<title>HISTTIMEFORMAT</title>
+			<screen>
+			<![CDATA[
+echo 'export HISTTIMEFORMAT="%Y-%m-%d-%H:%M:%S "' >> /etc/bashrc
+			]]>
+			</screen>
+
+			<screen>
+			<![CDATA[
+
+			]]>
+			</screen>
+		</section>
+	</section>
+	<section id="haproxy">
+		<title>haproxy</title>
+		<screen>
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+
+yum install haproxy -y
+		</screen>
+	</section>
+	<section id="zmodem">
+		<title>ZModem</title>
+		<screen>
+yum install lrzsz -y
+		</screen>
+	</section>
+	<section id="puppet">
+		<title>Puppet</title>
+		<section id="puppet.master">
+			<title>Puppet Master</title>
+			<screen>
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+
+yum install puppet-server
+service puppetmaster start
+chkconfig puppetmaster on
+			</screen>
+		</section>
+		<section id="puppet.node">
+			<title>Puppet Nodes</title>
+			<screen>
+yum install puppet -y
+service puppet start
+chkconfig puppet on
+			</screen>
+		</section>
+	</section>
+	<section id="curl">
+		<title>curl</title>
+		<screen>
+		<![CDATA[
+wget http://curl.haxx.se/download/curl-7.28.1.tar.gz
+tar zxvf curl-7.28.1.tar.gz
+cd curl-7.28.1
+./configure --prefix=/srv/curl-7.28.1/ --without-nss --with-ssl && make &&make install
+		]]>
+		</screen>
+	</section>
+</chapter>

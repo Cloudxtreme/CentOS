@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: chapter.rsync.xml 455 2012-08-22 10:47:08Z netkiller $ -->
+<section id="vsftpd">
+	<title>vsftpd</title>
+	<screen>
+	<![CDATA[
+        yum install -y vsftpd
+        adduser --home-dir /www/logs/ --shell /sbin/nologin logs
+        echo logs >> /etc/vsftpd/chroot_list
+        vim /etc/vsftpd/vsftpd.conf <<VIM > /dev/null 2>&1
+:%s/#chroot_list_enable=YES/chroot_list_enable=YES/
+:%s/#chroot_list_file/chroot_list_file/
+VIM
+        chkconfig vsftpd on
+        service vsftpd start
+	]]>
+	</screen>
+	<screen>
+	<![CDATA[
+adduser -o --home /www --shell /sbin/nologin --uid 99 --gid 99 --group nobody www
+echo "www:chen" | chpasswd
+echo www > /etc/vsftpd/chroot_list
+ncftp ftp://www:chen@172.16.0.1
+	]]>
+	</screen>
+</section>
+<section id="rsync">
+		<title>rsync</title>
+		<screen>
+yum install xinetd rsync -y
+		</screen>
+		<screen>
+		<![CDATA[
+vim /etc/xinetd.d/rsync <<VIM > /dev/null 2>&1
+:%s/yes/no/
+:wq
+VIM
+		]]>
+		</screen>
+		<screen>
+		<![CDATA[
+cat > /etc/rsyncd.conf <<EOD
+uid = root
+gid = root
+use chroot = no
+max connections = 8
+pid file = /var/run/rsyncd.pid
+lock file = /var/run/rsync.lock
+log file = /var/log/rsyncd.log
+
+hosts deny=*
+hosts allow=192.168.2.0/255.255.255.0
+
+[www]
+    uid = www
+    gid = www
+    path = /www/www.example.com
+    ignore errors
+    read only = no
+    list = no
+    auth users = neo
+    secrets file = /etc/rsyncd.passwd
+[images]
+    uid = www
+    gid = www
+    path = /www/images.example.com
+    ignore errors
+    read only = no
+    list = no
+    auth users = neo
+    secrets file = /etc/rsyncd.passwd
+
+EOD
+
+# chmod 600 /etc/rsyncd.*
+		]]>
+		</screen>
+
+		<screen>
+# service xinetd restart
+Stopping xinetd:                                           [  OK  ]
+Starting xinetd:                                           [  OK  ]
+		</screen>
+
+		<example>
+			<title>/etc/rsyncd.conf</title>
+			<screen>
+			<![CDATA[
+cat > /etc/rsyncd.conf <<EOD
+uid = root
+gid = root
+use chroot = no
+max connections = 8
+pid file = /var/run/rsyncd.pid
+lock file = /var/run/rsync.lock
+log file = /var/log/rsyncd.log
+
+hosts deny=*
+hosts allow=192.168.2.0/255.255.255.0
+
+[www]
+    uid = www
+    gid = www
+    path = /www
+    ignore errors
+    read only = no
+    list = no
+    auth users = www
+    secrets file = /etc/rsyncd.passwd
+EOD
+			]]>
+			</screen>
+			<screen>
+			<![CDATA[
+cat > /etc/rsyncd.passwd <<EOD
+www:eF9nJCcGKJPsiqZsfjGXxwfF41cLibTo
+EOD
+			]]>
+			</screen>
+			<screen>
+chmod 600 /etc/rsyncd.passwd
+			</screen>
+		</example>
+</section>

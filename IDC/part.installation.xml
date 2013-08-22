@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part id="index"><?dbhtml dir="idc" ?>
+	<title>IDC快速装机</title>
+	<info>
+		<keywordset>
+        <keyword>centos</keyword>
+        </keywordset>
+    </info>
+    <para>在工作中，需要经常为新系统安装软件，重复而简单，但又不得不作，我将过去几年中工作中临时写的脚本这里了一下，能够实现半自动化安装标本，只需要Ctrl+C, Ctrl+V 快速粘贴复制，即可快速完成安装</para>
+	<para>环境 CentOS 6.3 64bit Minior 安装</para>
+
+	&chapter.linux.xml;
+	&chapter.pkgs.xml;
+	&chapter.network.xml;
+	&chapter.lamp.xml;
+	&chapter.lnmp.xml;
+	&chapter.backup.xml;
+	&chapter.database.xml;
+</part>

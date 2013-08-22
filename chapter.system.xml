@@ -1,0 +1,556 @@
+<part id="system">
+	<title>System</title>
+<chapter id="install">
+	<title>Getting Started Guides</title>
+	<section id="install.partition">
+		<title>HDD Partition</title>
+		<para>partition</para>
+		<table>
+		   <title>Linux server partition</title>
+		   <tgroup cols="2">
+			 <thead>
+			   <row>
+				  <entry>volume</entry>
+				  <entry>size</entry>
+			   </row>
+			 </thead>
+			<tbody>
+			   	<row>
+				  <entry>/boot</entry>
+				  <entry>300M</entry>
+			   	</row>
+				<row>
+				  <entry>/</entry>
+				  <entry>30G</entry>
+			   	</row>
+				<row>
+				  <entry>/var</entry>
+				  <entry>50G</entry>
+			   	</row>
+			   	<row>
+				  <entry>/opt</entry>
+				  <entry>remainder</entry>
+				</row>
+			   	<row>
+				  <entry>swap</entry>
+				  <entry>memory * 2</entry>
+			   	</row>
+			</tbody>
+		   </tgroup>
+		</table>
+
+		<table>
+		   <title>Linux desktop partition</title>
+		   <tgroup cols="2">
+			 <thead>
+			   <row>
+				  <entry>volume</entry>
+				  <entry>size</entry>
+			   </row>
+			 </thead>
+			<tbody>
+			   	<row>
+				  <entry>/boot</entry>
+				  <entry>300M</entry>
+			   	</row>
+				<row>
+				  <entry>/</entry>
+				  <entry>30G</entry>
+			   	</row>
+				<row>
+				  <entry>/var</entry>
+				  <entry>50G</entry>
+			   	</row>
+			   	<row>
+				  <entry>/home</entry>
+				  <entry>remainder</entry>
+				</row>
+			   	<row>
+				  <entry>swap</entry>
+				  <entry>memory * 2</entry>
+			   	</row>
+			</tbody>
+		   </tgroup>
+		</table>
+
+	</section>
+	<section id="install.scientific">
+		<title>Scientific Linux</title>
+		<para><graphic  format="png" fileref="images/scientific/scientific-1.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-2.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-3.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-4.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-5.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-6.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-7.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-8.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-9.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-10.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-11.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-12.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-13.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-14.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-15.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-16.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-17.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-18.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-19.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-20.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/scientific/scientific-21.png" srccredit="neo" width=""/></para>
+	</section>
+	<section id="install.redhat">
+		<title>Redhat Linux</title>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000010.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000011.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000012.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000013.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000014.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000015.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000016.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000017.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000018.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000019.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000020.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000021.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000022.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000023.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000024.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000025.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000026.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000027.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000028.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000029.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000030.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000031.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000032.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/redhat/Redhat-000033.png" srccredit="neo" width=""/></para>
+	</section>
+	<section id="install.centos">
+		<title>CentOS Linux</title>
+		<para><graphic  format="png" fileref="images/centos/CentOS-1.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-2.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-3.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-4.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-5.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-6.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-6-1.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-6-2.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-7.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-8.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-9.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-1.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-2.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-3.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-4.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-5.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-6.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-7.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-8.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-9.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-10-10.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-11.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-12.png" srccredit="neo" width=""/></para>
+		<para><graphic  format="png" fileref="images/centos/CentOS-13.png" srccredit="neo" width=""/></para>
+	</section>
+	<section id="5.x">
+		<title>5.x 减肥</title>
+		<para>卸载无用的包</para>
+		<screen>
+yum remove NetworkManager
+yum remove avahi
+yum remove cups
+yum remove bluez-gnome bluez-utils bluez-libs
+yum remove isdn4k-utils
+		</screen>
+	</section>
+	<section id="6.x">
+		<title>6.x Mini 安装后需要做的一些事</title>
+		<para>禁用防火墙与SELinux</para>
+		<screen>
+lokkit --disabled --selinux=disabled
+		</screen>
+		<screen>
+yum remove dhclient -y
+		</screen>
+		<screen>
+yum update -y
+yum install -y telnet wget rsync
+yum install -y openssh-clients
+yum install -y system-config-network-tui
+yum install -y bind-utils
+yum install -y vim-enhanced
+		</screen>
+	</section>
+</chapter>
+<chapter id="system.utilities">
+	<title>System Utilities 配置工具</title>
+	<para></para>
+	<para>timeconfig</para>
+	<para>system-config-cluster</para>
+	<para>system-config-httpd</para>
+	<para>system-config-nfs</para>
+	<para>system-config-samba</para>
+	<section>
+		<title>setup</title>
+		<para>setup</para>
+	</section>
+	<section id="system-config-date">
+		<title>system-config-date</title>
+		<screen>
+   ┌────────┤ Timezone Selection ├────────┐
+   │                                      │
+   │ Select the timezone for the system.  │
+   │                                      │
+   │  Asia/Bahrain                    ↑   │
+   │  Asia/Baku                       ▒   │
+   │  Asia/Bangkok                    ▒   │
+   │  Asia/Beirut                     ▮   │
+   │  Asia/Bishkek                    ▒   │
+   │  Asia/Brunei                     ▒   │
+   │  Asia/Choibalsan                 ▒   │
+   │  Asia/Chongqing                  ↓   │
+   │                                      │
+   │      [*] System clock uses UTC       │
+   │                                      │
+   │     ┌────┐          ┌────────┐       │
+   │     │ OK │          │ Cancel │       │
+   │     └────┘          └────────┘       │
+   │                                      │
+   │                                      │
+   └──────────────────────────────────────┘
+		</screen>
+	</section>
+
+	<section id="system-config-firewall">
+		<title>system-config-firewall</title>
+		<screen>
+        ┌───────────┤ Firewall Configuration ├───────────┐
+        │                                                │
+        │ A firewall protects against unauthorized       │
+        │ network intrusions. Enabling a firewall blocks │
+        │ all incoming connections. Disabling a firewall │
+        │ allows all connections and is not recommended. │
+        │                                                │
+        │             Firewall: [*] Enabled              │
+        │                                                │
+        │   ┌────┐      ┌───────────┐      ┌────────┐    │
+        │   │ OK │      │ Customize │      │ Cancel │    │
+        │   └────┘      └───────────┘      └────────┘    │
+        │                                                │
+        │                                                │
+        └────────────────────────────────────────────────┘
+		</screen>
+	</section>
+	<section id="system-config-securitylevel">
+		<title>system-config-securitylevel</title>
+		<screen>
+     ┌────────────┤ Firewall Configuration ├────────────┐
+     │                                                  │
+     │ A firewall protects against unauthorized         │
+     │ network intrusions. Enabling a firewall blocks   │
+     │ all incoming connections. Disabling a firewall   │
+     │ allows all connections and is not recommended.   │
+     │                                                  │
+     │    Security Level: ( ) Enabled (*) Disabled      │
+     │                                                  │
+     │               SELinux: Enforcing                 │
+     │                        Permissive                │
+     │                        Disabled                  │
+     │                                                  │
+     │    ┌────┐       ┌───────────┐      ┌────────┐    │
+     │    │ OK │       │ Customize │      │ Cancel │    │
+     │    └────┘       └───────────┘      └────────┘    │
+     │                                                  │
+     │                                                  │
+     └──────────────────────────────────────────────────┘
+		</screen>
+	</section>
+	<section id="system-config-language">
+		<title>system-config-language</title>
+		<screen>
+ ┌──────────┤ Language Selection ├──────────┐
+ │                                          │
+ │   Select the language for the system.    │
+ │                                          │
+ │  English (Hong Kong)                   ↑ │
+ │  English (India)                       ▒ │
+ │  English (Ireland)                     ▮ │
+ │  English (New Zealand)                 ▒ │
+ │  English (Philippines)                 ▒ │
+ │  English (Singapore)                   ▒ │
+ │  English (South Africa)                ▒ │
+ │  English (USA)                         ↓ │
+ │                                          │
+ │      ┌────┐            ┌────────┐        │
+ │      │ OK │            │ Cancel │        │
+ │      └────┘            └────────┘        │
+ │                                          │
+ │                                          │
+ └──────────────────────────────────────────┘
+		</screen>
+	</section>
+	<section id="system-config-keyboard">
+		<title>system-config-keyboard</title>
+		<screen>
+       ┌─────────────┤ Keyboard Selection ├──────────────┐
+       │                                                 │
+       │ Select the appropriate keyboard for the system. │
+       │                                                 │
+       │        Slovenian                       ↑        │
+       │        Serbian                         ▒        │
+       │        Serbian (latin)                 ▒        │
+       │        Swedish                         ▒        │
+       │        Turkish                         ▒        │
+       │        Ukrainian                       ▮        │
+       │        United Kingdom                  ▒        │
+       │        U.S. English                    ↓        │
+       │                                                 │
+       │        ┌────┐                ┌────────┐         │
+       │        │ OK │                │ Cancel │         │
+       │        └────┘                └────────┘         │
+       │                                                 │
+       │                                                 │
+       └─────────────────────────────────────────────────┘
+		</screen>
+	</section>
+	<section id="system-config-network">
+		<title>system-config-network</title>
+		<para>system-config-network</para>
+		<screen>
+		<![CDATA[
+          ┌──────┤ Select Action ├──────┐
+          │                             │
+          │    Device configuration     │
+          │    DNS configuration        │
+          │                             │
+          │                             │
+          │                             │
+          │  ┌───────────┐   ┌──────┐   │
+          │  │ Save&Quit │   │ Quit │   │
+          │  └───────────┘   └──────┘   │
+          │                             │
+          │                             │
+          └─────────────────────────────┘
+		]]>
+		</screen>
+		<para>system-config-network-cmd</para>
+		<screen>
+[root@r910 ~]# system-config-network-cmd
+DeviceList.Ethernet.eth0.AllowUser=False
+DeviceList.Ethernet.eth0.BootProto=dhcp
+DeviceList.Ethernet.eth0.Device=eth0
+DeviceList.Ethernet.eth0.DeviceId=eth0
+DeviceList.Ethernet.eth0.HardwareAddress=78:2B:CB:3B:4B:74
+DeviceList.Ethernet.eth0.IPv6Init=False
+DeviceList.Ethernet.eth0.NMControlled=True
+DeviceList.Ethernet.eth0.OnBoot=False
+DeviceList.Ethernet.eth0.Type=Ethernet
+DeviceList.Ethernet.eth1.AllowUser=False
+DeviceList.Ethernet.eth1.BootProto=dhcp
+DeviceList.Ethernet.eth1.Device=eth1
+DeviceList.Ethernet.eth1.DeviceId=eth1
+DeviceList.Ethernet.eth1.HardwareAddress=78:2B:CB:3B:4B:76
+DeviceList.Ethernet.eth1.IPv6Init=False
+DeviceList.Ethernet.eth1.NMControlled=True
+DeviceList.Ethernet.eth1.OnBoot=False
+DeviceList.Ethernet.eth1.Type=Ethernet
+DeviceList.Ethernet.eth2.AllowUser=False
+DeviceList.Ethernet.eth2.BootProto=dhcp
+DeviceList.Ethernet.eth2.Device=eth2
+DeviceList.Ethernet.eth2.DeviceId=eth2
+DeviceList.Ethernet.eth2.HardwareAddress=78:2B:CB:3B:4B:78
+DeviceList.Ethernet.eth2.IPv6Init=False
+DeviceList.Ethernet.eth2.NMControlled=True
+DeviceList.Ethernet.eth2.OnBoot=False
+DeviceList.Ethernet.eth2.Type=Ethernet
+DeviceList.Ethernet.eth3.AllowUser=False
+DeviceList.Ethernet.eth3.BootProto=dhcp
+DeviceList.Ethernet.eth3.Device=eth3
+DeviceList.Ethernet.eth3.DeviceId=eth3
+DeviceList.Ethernet.eth3.HardwareAddress=78:2B:CB:3B:4B:7A
+DeviceList.Ethernet.eth3.IPv6Init=False
+DeviceList.Ethernet.eth3.NMControlled=True
+DeviceList.Ethernet.eth3.OnBoot=False
+DeviceList.Ethernet.eth3.Type=Ethernet
+HardwareList.Ethernet.eth3.Card.ModuleName=bnx2
+HardwareList.Ethernet.eth3.Description=Broadcom Corporation NetXtreme II BCM5709 Gigabit Ethernet
+HardwareList.Ethernet.eth3.Name=eth3
+HardwareList.Ethernet.eth3.Status=system
+HardwareList.Ethernet.eth3.Type=Ethernet
+HardwareList.Ethernet.eth2.Card.ModuleName=bnx2
+HardwareList.Ethernet.eth2.Description=Broadcom Corporation NetXtreme II BCM5709 Gigabit Ethernet
+HardwareList.Ethernet.eth2.Name=eth2
+HardwareList.Ethernet.eth2.Status=system
+HardwareList.Ethernet.eth2.Type=Ethernet
+HardwareList.Ethernet.eth1.Card.ModuleName=bnx2
+HardwareList.Ethernet.eth1.Description=Broadcom Corporation NetXtreme II BCM5709 Gigabit Ethernet
+HardwareList.Ethernet.eth1.Name=eth1
+HardwareList.Ethernet.eth1.Status=system
+HardwareList.Ethernet.eth1.Type=Ethernet
+HardwareList.Ethernet.eth0.Card.ModuleName=bnx2
+HardwareList.Ethernet.eth0.Description=Broadcom Corporation NetXtreme II BCM5709 Gigabit Ethernet
+HardwareList.Ethernet.eth0.Name=eth0
+HardwareList.Ethernet.eth0.Status=system
+HardwareList.Ethernet.eth0.Type=Ethernet
+ProfileList.default.Active=True
+ProfileList.default.ActiveDevices.1=eth0
+ProfileList.default.ActiveDevices.2=eth1
+ProfileList.default.ActiveDevices.3=eth2
+ProfileList.default.ActiveDevices.4=eth3
+ProfileList.default.DNS.Domainname=
+ProfileList.default.DNS.Hostname=r910.example.com
+ProfileList.default.DNS.PrimaryDNS=202.96.134.133
+ProfileList.default.DNS.SearchList.1=example.com
+ProfileList.default.DNS.SecondaryDNS=202.96.128.68
+ProfileList.default.DNS.TertiaryDNS=
+ProfileList.default.HostsList.1.AliasList.1=r910
+ProfileList.default.HostsList.1.Hostname=r910.example.com
+ProfileList.default.HostsList.1.IP=192.168.80.33
+ProfileList.default.HostsList.2.AliasList.1=localhost
+ProfileList.default.HostsList.2.Hostname=localhost.localdomain
+ProfileList.default.HostsList.2.IP=127.0.0.1
+ProfileList.default.HostsList.3.AliasList.1=r910
+ProfileList.default.HostsList.3.AliasList.2=localhost6.localdomain6
+ProfileList.default.HostsList.3.AliasList.3=localhost6
+ProfileList.default.HostsList.3.Hostname=r910.example.com
+ProfileList.default.HostsList.3.IP=::1
+ProfileList.default.ProfileName=default
+		</screen>
+	</section>
+	<section id="ntsysv">
+		<title>ntsysv</title>
+		<para>ntsysv</para>
+		<screen>
+     ┌──────────────────┤ Services ├──────────────────┐
+     │                                                │
+     │ What services should be automatically started? │
+     │                                                │
+     │             [*] NetworkManager  ↑              │
+     │             [*] acpid           ▮              │
+     │             [*] atd             ▒              │
+     │             [ ] auditd          ▒              │
+     │             [*] autofs          ▒              │
+     │             [*] avahi-daemon    ▒              │
+     │             [*] bluetooth       ▒              │
+     │             [ ] certmonger      ▒              │
+     │             [ ] cgconfig        ▒              │
+     │             [ ] cgred           ▒              │
+     │             [*] cpuspeed        ▒              │
+     │             [*] crond           ▒              │
+     │             [*] cups            ▒              │
+     │             [ ] dnsmasq         ▒              │
+     │             [ ] firstboot       ▒              │
+     │             [*] haldaemon       ↓              │
+     │                                                │
+     │        ┌────┐               ┌────────┐         │
+     │        │ Ok │               │ Cancel │         │
+     │        └────┘               └────────┘         │
+     │                                                │
+     │                                                │
+     └────────────────────────────────────────────────┘
+		</screen>
+	</section>
+	<section id="lokkit">
+		<title>lokkit</title>
+		<para>lokkit</para>
+		<para>禁用Iptable与SELinux</para>
+		<screen>
+lokkit --disabled --selinux=disabled
+		</screen>
+	</section>
+	<section id="system-config-kdump">
+		<title>system-config-kdump</title>
+	</section>
+	<section id="system-config-services">
+		<title>system-config-services</title>
+		<para>system-config-services</para>
+	</section>
+	<section id="authconfig-tui">
+		<title>authconfig-tui</title>
+		<para>authconfig-tui</para>
+	</section>
+</chapter>
+	&chapter.kickstart.xml;
+	&chapter.system.package.xml;
+
+<chapter id="locale">
+	<title>区域设置</title>
+	<section id="time.zone">
+		<title>Time Zone</title>
+		<para>timeconfig</para>
+		<para>system-config-date</para>
+		<section>
+			<title>/etc/sysconfig/clock</title>
+			<screen>
+[root@ntp ~]# cat /etc/sysconfig/clock
+ZONE="Asia/Harbin"
+UTC=true
+ARC=false
+			</screen>
+		</section>
+		<section>
+			<title>/usr/share/zoneinfo</title>
+			<screen>
+[root@ntp ~]# ls /usr/share/zoneinfo
+Africa      Asia       Canada   Cuba   EST      Factory  GMT0       Hongkong  Iran         Japan      Mexico   Navajo   Poland      PRC      ROK        Universal  W-SU
+America     Atlantic   CET      EET    EST5EDT  GB       GMT-0      HST       iso3166.tab  Kwajalein  Mideast  NZ       Portugal    PST8PDT  Singapore  US         zone.tab
+Antarctica  Australia  Chile    Egypt  Etc      GB-Eire  GMT+0      Iceland   Israel       Libya      MST      NZ-CHAT  posix       right    Turkey     UTC        Zulu
+Arctic      Brazil     CST6CDT  Eire   Europe   GMT      Greenwich  Indian    Jamaica      MET        MST7MDT  Pacific  posixrules  ROC      UCT        WET
+			</screen>
+			<screen>
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+			</screen>
+		</section>
+	</section>
+	<section id="datatime">
+		<title>日期、时间</title>
+		<screen>
+# date -s "2008-7-19"
+# date -s 18:10
+		</screen>
+		<section id="rdate">
+			<title>rdate - get the time via the network</title>
+			<screen>
+# rdate time-a.nist.gov 查看
+# rdate -s time-a.nist.gov 设置
+			</screen>
+		</section>
+	</section>
+	<section id="language">
+		<title>语言</title>
+		<para><command>system-config-language</command></para>
+		<screen>
+vim /etc/sysconfig/i18n
+LANG="en_US.UTF-8"
+		</screen>
+		<para>查看语言</para>
+		<screen>
+locale -a
+		</screen>
+	</section>
+
+</chapter>
+
+	<chapter id="sudo">
+		<title>sudo, sudoedit - execute a command as another user</title>
+		<screen>
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+neo     ALL=(ALL)       ALL
+%wheel  ALL=(ALL)       ALL
+		</screen>
+	</chapter>
+	<chapter>
+		<title>Logging</title>
+	</chapter>
+	<chapter id="crontabs">
+		<title>crontab</title>
+		<screen>
+# yum install crontabs
+		</screen>
+	</chapter>
+	&chapter.service.xml;
+	&chapter.system.filesystem.xml;
+
+</part>
