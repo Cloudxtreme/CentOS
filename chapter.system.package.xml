@@ -805,5 +805,59 @@ Other macros
 			]]>
 			</screen>
 		</section>
+		<section>
+			<title>--define 专递模板变量</title>
+			<para>spec 文件中定义宏默认值</para>
+			<screen>
+			<![CDATA[
+%define <variable> <value>			
+			]]>
+			</screen>
+			<para>另一种是在外部传递变量值</para>
+			<screen>
+rpmbuild -ba SPECS/bacula.spec --define "build_su110 1" --define "build_mysql4 1"			
+			</screen>
+			<para>注意：当两种同时使用时，外部--define无法替代%define 的定义。</para>
+		</section>
+		<section>
+			<title></title>
+			<para>查看GPG证书</para>
+			<screen>
+			<![CDATA[
+$ gpg --list-keys
+/home/neo/.gnupg/pubring.gpg
+----------------------------
+pub   1024R/63268A35 2013-09-11
+uid                  Neo Chen (netkiller) <netkiller@msn.com>
+sub   1024R/F4F946F9 2013-09-11
+			]]>	
+			</screen>
+			<para>设置 _gpg_name 宏，与上面查看结果需一致</para>
+			<screen>
+			<![CDATA[
+cat << EOF >> ~/.rpmmacros
+%_signature gpg
+%_gpg_name Neo Chen (netkiller) <netkiller@msn.com>
+%_gpgpath ~/.gnupg
+%_gpgbin /usr/bin/gpg
+EOF			
+			]]>
+			</screen>
+			<para>建立RPM</para>
+			<screen>
+rpmbuild --define "_topdir /path/to/macrodir" -bb --sign spec			
+			</screen>
+			<para>如果你的证书有Passphrase，会提示你输入了密码。</para>
+			<screen>
+Enter pass phrase: 
+Pass phrase is good.			
+			</screen>
+		</section>
+		<section>
+			<title>FAQ</title>
+			
+			<para>error: File /home/neo/rpmbuild/SOURCES/netkiller-docbook-1.0.1.tar.gz: No such file or directory</para>
+			<para>Source 定义的文件不存在，如果你需要忽略Source可以使用  %setup -T</para>
+		</section>
 	</section>
 </chapter>
