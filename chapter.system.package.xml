@@ -70,6 +70,11 @@ rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 rpm -K http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
 rpm -i http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
     			</screen>
+    			<para>CentOS 6.5</para>
+    			<screen>
+http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.i686.rpm    			
+http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm    			
+    			</screen>
     		</section>
 			<section>
 				<title>CentALT</title>
