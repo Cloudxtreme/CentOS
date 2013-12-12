@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id: chapter.system.package.xml 605 2013-05-29 09:48:16Z netkiller $ -->
-<chapter id="package">
+<chapter id="index"><?dbhtml dir="package" ?>
 	<title>Package Manager</title>
-	<section id="package.mirror">
+	<section id="mirror">
 		<title>Yum Resource &amp; Yum Mirror</title>
 		<screen>
 yum install yum-fastestmirror -y

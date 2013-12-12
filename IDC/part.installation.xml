@@ -11,7 +11,7 @@
 
 	&chapter.linux.xml;
 	&chapter.pkgs.xml;
-	&chapter.network.xml;
+	&chapter.net.xml;
 	&chapter.lamp.xml;
 	&chapter.lnmp.xml;
 	&chapter.backup.xml;

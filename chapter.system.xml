@@ -1,4 +1,4 @@
-<part id="system">
+<part id="index"><?dbhtml dir="system" ?>
 	<title>System</title>
 <chapter id="install">
 	<title>Getting Started Guides</title>
@@ -541,7 +541,7 @@ neo     ALL=(ALL)       ALL
 %wheel  ALL=(ALL)       ALL
 		</screen>
 	</chapter>
-	<chapter>
+	<chapter id="logging">
 		<title>Logging</title>
 	</chapter>
 	<chapter id="crontabs">

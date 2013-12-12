@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter id="fs">
+<chapter id="index"><?dbhtml dir="filesystem" ?>
 	<title>File System</title>
 
-	<section id="fs.ext4">
+	<section id="ext4">
 		<title>EXT4</title>
 		<section>
 			<title>install</title>
@@ -53,10 +53,10 @@ proc                    /proc                   proc    defaults        0 0
 			</screen>
 		</section>
 	</section>
-	<section id="fs.lvm">
+	<section id="lvm">
 		<title>LVM</title>
 	</section>
-	<section id="fs.zfs">
+	<section id="zfs">
 		<title>zfs</title>
 		<screen>
 # yum info zfs-fuse
@@ -87,7 +87,7 @@ Description: ZFS is an advanced modern general-purpose filesystem from Sun
            : Project home page is at http://zfs-fuse.net/
 		</screen>
 	</section>
-	<section id="fs.btrfs">
+	<section id="btrfs">
 		<title>btrfs</title>
 		<screen>
 yum install btrfs-progs
@@ -236,7 +236,7 @@ chunk uuid 2826f868-c775-4835-8690-1020a2a9fbf5
 		</section>
 	</section>
 
-	<section id="fs.iscsi">
+	<section id="iscsi">
 		<title>iSCSI</title>
 		<para>iSCSI 需要与GFS配合使用，其他文件系统不能实现数据同步。</para>
 		<procedure>
@@ -423,7 +423,7 @@ UUID:                      A75C4963-85A2-A28B-4099-07FD7E3379D6
 			</screen>
 		</section>
 	</section>
-	<section id="fs.gfs">
+	<section id="gfs">
 		<title>GFS - Cluster Storage</title>
 		<para><ulink url="http://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6/html/Global_File_System_2/index.html" /></para>
 		<screen>

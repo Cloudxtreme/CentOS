@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter id="piranha">
+<chapter id="index"><?dbhtml dir="piranha" ?>
 	<title>Piranha - Cluster administation tools</title>
 	<chapterinfo>
 		<abstract>
@@ -11,7 +11,7 @@
 			<keyword>ipvsadmin</keyword>
 		</keywordset>
 	</chapterinfo>
-	<section id="piranha.install">
+	<section id="install">
 		<title>install</title>
 		<para> Install piranha and ipvsadm packages on the LVS Routers</para>
 		<screen>
@@ -46,14 +46,14 @@ setenforce: SELinux is disabled
 # service piranha-gui start
 		</screen>
 	</section>
-	<section id="piranha.configure">
+	<section id="configure">
 		<title>configure</title>
 		<para>http://your.domain.com:3636/</para>
 		<para>user: piranha </para>
 		<para>passwd: your piranha </para>
 		<para>/etc/sysconfig/ha/lvs.cf</para>
 	</section>
-	<section id="piranha.slb">
+	<section id="slb">
 		<title>real server</title>
 		<para>DR连接方式</para>
 		<screen>
@@ -82,7 +82,7 @@ sysctl -p >/dev/null 2>&1
 		</screen>
 	</section>
 
-	<section id="piranha.example">
+	<section id="example">
 		<title>Example</title>
 		<section>
 			<title>Master</title>

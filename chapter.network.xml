@@ -1,7 +1,7 @@
-<part id="network">
+<part id="index"><?dbhtml dir="network" ?>
 	<title>Network</title>
 	<para></para>
-<chapter id="network.ip">
+<chapter id="ip">
 	<title>IP Address</title>
 	<command>system-config-network</command>
 	<screen>
@@ -55,7 +55,7 @@ Bringing up interface eth0:
 	]]>
 	</screen>
 
-	<section id="network.gateway">
+	<section id="gateway">
 		<title>Gateway</title>
 		<screen>
 		<![CDATA[
@@ -67,7 +67,7 @@ GATEWAY=192.168.3.1
 		]]>
 		</screen>
 	</section>
-	<section id="network.hosts">
+	<section id="hosts">
 		<title>hosts</title>
 		<screen>
 		<![CDATA[
@@ -80,7 +80,7 @@ GATEWAY=192.168.3.1
 		]]>
 		</screen>
 	</section>
-	<section id="network.bonding">
+	<section id="bonding">
 	    <title>bonding</title>
 	    <screen>
 	    <![CDATA[

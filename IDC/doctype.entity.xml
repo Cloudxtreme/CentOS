@@ -2,7 +2,7 @@
 
 	<!ENTITY part.installation.xml		SYSTEM "part.installation.xml">
 	<!ENTITY chapter.linux.xml			SYSTEM "chapter.linux.xml">
-	<!ENTITY chapter.network.xml		SYSTEM "chapter.network.xml">
+	<!ENTITY chapter.net.xml			SYSTEM "chapter.network.xml">
 	<!ENTITY chapter.ntpd.xml			SYSTEM "chapter.ntpd.xml">
 	<!ENTITY chapter.lamp.xml			SYSTEM "chapter.lamp.xml">
 	<!ENTITY chapter.lnmp.xml			SYSTEM "chapter.lnmp.xml">

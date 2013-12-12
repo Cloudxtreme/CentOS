@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter id="ibm.websphere">
+<chapter id="index"><?dbhtml dir="websphere" ?>
 	<title>IBM WebSphere</title>
-	<section id="websphere.wcs">
+	<section id="wcs">
 		<title>WebSphere Commerce Engerprise 7.0</title>
 		<para>设置语言</para>
 		<screen>
@@ -235,7 +235,7 @@ cp -i -r IBMIHS IBMIHS.pack
 			]]>
 			</screen>
 		</section>
-	<section id="websphere.instance">
+	<section id="instance">
 		<title>creating a WebSphere Commerce instance</title>
 		<screen>
 		<![CDATA[
@@ -362,7 +362,7 @@ $ exp wcs_test2/wcs_test2@wcsdb file=/home/oracle/wcsdb.dmp full=y
 imp wcs_test2/wcs_test2@wcsdb file=/home/oracle/wcsdb.dmp
  -->
 	</section>
-	<section id="websphere.enableFeature">
+	<section id="enableFeature">
 		<title>enableFeature</title>
 		<screen>
 [root@wcs ~]# /opt/IBMIHS/bin/apachectl -k start -f /opt/IBM/WebSphere/CommerceServer70/instances/demo/httpconf/httpd.conf
@@ -452,7 +452,7 @@ https://wcs.example.com:8000/lobtools
 		]]>
 		</screen>
 	</section>
-	<section id="websphere.start">
+	<section id="start">
 		<title>Start IBMIHS and AppServer</title>
 		<section>
 			<title>IBMIHS</title>
@@ -519,7 +519,7 @@ https://wcs.example.com:9063/ibm/console/logon.jsp (configadmin)
 			</screen>
 		</section>
 	</section>
-	<section id="websphere.store">
+	<section id="store">
 		<title>Initialization store</title>
 		<para>ExtendedSites-FEP.sar</para>
 		<para><graphic  format="png" fileref="images/WebSphere/ExtendedSites-FEP-1.png" srccredit="neo" width=""/></para>
