@@ -247,18 +247,33 @@ server:/usr/local/pub    /pub   nfs    rsize=8192,wsize=8192,timeo=14,intr,udp
 		<para>启动NFS服务，控制面板\管理工具\Network File System 服务(NFS)</para>
 		<para>或者通过命令启动NFS服务</para>
 		<screen>
-nfsadmin client [ComputerName] start		
+nfsadmin client [ComputerName] start
 		</screen>
-		<para></para>
+		<para>挂载文件系统</para>
 		<screen>
-C:\Users\neo>mount \\192.168.2.15\www x:\		
+		<![CDATA[
+C:\Users\neo>mount \\192.168.2.15\www x:\
+		]]>
+		</screen>
+		<para>卸载文件系统</para>
+		<screen>
+		<![CDATA[
+C:\Users\neo>umount x:
+
+正在断开                x:      \\192.168.2.15\www
+连接上存在打开的文件和/或未完成的目录搜索。
+
+要继续此操作吗? (Y/N) [N]:Y
+
+命令已成功完成。
+		]]>
 		</screen>
 	</section>
 	<section id="exportfs">
 		<title>exportfs - maintain table of exported NFS file systems</title>
 		<screen>
 # exportfs -o rw,all_squash,sync,anonuid=500,anongid=500 172.16.0.0/24:/www
-# exportfs 
+# exportfs
 /www          	172.16.0.0/24
 
 # cat /var/lib/nfs/etab
@@ -298,5 +313,5 @@ stop()
 
 
 		</screen>
-	</section>	
+	</section>
 </chapter>
