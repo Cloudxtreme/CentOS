@@ -249,6 +249,8 @@ server:/usr/local/pub    /pub   nfs    rsize=8192,wsize=8192,timeo=14,intr,udp
 		<screen>
 nfsadmin client [ComputerName] start
 		</screen>
+		<para>指定挂在用户ID，开始“运行”输入“regedit”回车，然后找到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default，右键“新建”选择“DWORD(32为)值” 添加 AnonymousUid，AnonymousGid，然后双击 AnonymousUid，AnonymousGid编辑，选择十进制并输入用户ID。</para>
+		<para>重新启动NFS 服务，不需要重新启动计算机。</para>
 		<para>挂载文件系统</para>
 		<screen>
 		<![CDATA[
@@ -268,6 +270,9 @@ C:\Users\neo>umount x:
 命令已成功完成。
 		]]>
 		</screen>
+		<tip>
+			<para>很不幸Microsoft Windows 目前尚不支持UTF-8字符集。</para>
+		</tip>
 	</section>
 	<section id="exportfs">
 		<title>exportfs - maintain table of exported NFS file systems</title>
