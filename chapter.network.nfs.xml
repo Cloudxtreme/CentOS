@@ -14,7 +14,7 @@ yum install -y nfs-utils
 				<screen>
 service nfs stop
 service nfslock stop
-service portmap stop
+service rpcbind stop
 service rpcidmapd stop
 				</screen>
 			</step>
@@ -47,18 +47,18 @@ as root edit /etc/fstab and add nfs4 exports
 			<step>
 				<para>firewall</para>
 				<screen>
-iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 2049 -j ACCEPT
+iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 2049 -j ACCEPT
 				</screen>
 			</step>
 			<step>
 				<para>start required services</para>
 				<screen>
-chkconfig portmap on
+chkconfig rpcbind on
 chkconfig nfs on
 chkconfig nfslock on
 chkconfig rpcidmapd on
 
-service portmap start
+service rpcbind start
 service rpcidmapd start
 service nfs start
 service nfslock start
@@ -110,10 +110,10 @@ server_caps  delegreturn
 				<para>security</para>
 				<screen>
 # vi /etc/hosts.deny
-portmap:ALL
+rpcbind:ALL
 
 # vi /etc/hosts.allow
-portmap:172.16.1.0/255.255.254.0
+rpcbind:172.16.1.0/255.255.254.0
 				</screen>
 			</step>
 		</procedure>
@@ -136,9 +136,9 @@ portmap:172.16.1.0/255.255.254.0
 				<para>注意，要通过NFS4共享一个目录,必须使用 fsid=0 的参数,使用fsid=0选项的时候只能共享一个目录，这个目录将成为NFS服务器的根目录。</para>
 			</step>
 			<step>
-				<para>启动NFS,v4 不需要portmap</para>
+				<para>启动NFS,v4 不需要rpcbind</para>
 				<screen>
-service portmap stop
+service rpcbind stop
 service rpcidmapd stop
 service nfs restart
 service nfslock stop
@@ -240,6 +240,19 @@ mount -o udp shadowman.example.com:/misc/export /misc/local
 server:/usr/local/pub    /pub   nfs    rsize=8192,wsize=8192,timeo=14,intr,udp
 			</screen>
 		</section>
+	</section>
+	<section id="nfs.windowns">
+		<title>NFS For Windows</title>
+		<para>安装NFS服务，进入“控制面板”，点击“打开或关闭Windows功能”，再勾选“NFS 服务”，最后确定</para>
+		<para>启动NFS服务，控制面板\管理工具\Network File System 服务(NFS)</para>
+		<para>或者通过命令启动NFS服务</para>
+		<screen>
+nfsadmin client [ComputerName] start		
+		</screen>
+		<para></para>
+		<screen>
+C:\Users\neo>mount \\192.168.2.15\www x:\		
+		</screen>
 	</section>
 	<section id="exportfs">
 		<title>exportfs - maintain table of exported NFS file systems</title>
