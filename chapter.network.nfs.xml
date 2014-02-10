@@ -44,12 +44,15 @@ as root edit /etc/fstab and add nfs4 exports
 # exportfs -rv
 				</screen>
 			</step>
+			<!-- 
 			<step>
 				<para>firewall</para>
 				<screen>
 iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 2049 -j ACCEPT
+iptables -A INPUT -m state --state NEW -m udp -p udp --dport 2049 -j ACCEPT		
 				</screen>
 			</step>
+			 -->
 			<step>
 				<para>start required services</para>
 				<screen>
@@ -159,6 +162,32 @@ mount -t nfs4 172.16.1.15:/logs /mnt
 				</screen>
 			</step>
 		</procedure>
+		<section>
+			<title>NFS 防火墙配置</title>
+			<para>查看NFS正在使用的端口</para>
+			<screen>
+rpcinfo -p localhost			
+			</screen>
+			<para>vi /etc/sysconfig/nfs</para>
+			<screen>
+LOCKD_TCPPORT=32803
+LOCKD_UDPPORT=32769
+MOUNTD_PORT=892
+RQUOTAD_PORT=875
+STATD_PORT=662
+STATD_OUTGOING_PORT=2020
+			</screen>
+			<screen>
+service nfs restart
+			</screen>
+			<screen>
+iptables -I INPUT -m state --state NEW -p tcp \
+    -m multiport --dport 111,892,2049,32803 -s 192.168.0.0/24 -j ACCEPT
+ 
+iptables -I INPUT -m state --state NEW -p udp \
+    -m multiport --dport 111,892,2049,32769 -s 192.168.0.0/24 -j ACCEPT		
+			</screen>
+		</section>
 	</section>
 
 	<section id="nfs.client">
