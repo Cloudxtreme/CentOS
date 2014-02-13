@@ -44,15 +44,6 @@ as root edit /etc/fstab and add nfs4 exports
 # exportfs -rv
 				</screen>
 			</step>
-			<!-- 
-			<step>
-				<para>firewall</para>
-				<screen>
-iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 2049 -j ACCEPT
-iptables -A INPUT -m state --state NEW -m udp -p udp --dport 2049 -j ACCEPT		
-				</screen>
-			</step>
-			 -->
 			<step>
 				<para>start required services</para>
 				<screen>
