@@ -409,7 +409,7 @@ yum groupremove "GNOME Desktop Environment" "Games and Entertainment" "Graphical
 			<title>YUM 源管理</title>
 			<para>列出所有yum源</para>
 			<screen>
-um repolist all
+# yum repolist all
 			</screen>
 			<para>查看启用YUM源</para>
 			<screen>
