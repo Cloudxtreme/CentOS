@@ -10,6 +10,7 @@ yum install yum-fastestmirror -y
 		<section>
 			<title>Fedora resource</title>
 			<para>http://fedoraproject.org/wiki/EPEL</para>
+<!-- 			
 			<section>
 				<title>Fedora 5.3</title>
 				<para>5.3</para>
@@ -18,12 +19,13 @@ rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-3.noar
 rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-release-5-3.noarch.rpm
 				</screen>
 			</section>
+ -->			
 			<section>
 				<title>Fedora 5.4</title>
 				<para>5.4</para>
 				<screen>
-rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
-rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
 				</screen>
 			</section>
 			<section>
