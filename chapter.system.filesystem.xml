@@ -150,14 +150,68 @@ UUID=0b097eeb-1f0b-476a-955b-52122ef42bfc /opt    btrfs   defaults 1 2
 				</section>
 			</section>
 		</section>
+		<section>
+			<title>Snapshots and subvolumes (快照与子卷管理)</title>
+			<section>
+				<title>subvolumes</title>
+				<screen>
+# df -T
+Filesystem     Type  1K-blocks      Used Available Use% Mounted on
+/dev/md126p2   ext4   50395844  19952780  27883064  42% /
+tmpfs          tmpfs   4024944       800   4024144   1% /dev/shm
+/dev/md126p1   ext4     495844    172140    298104  37% /boot
+/dev/md126p6   btrfs 500084736 360835636 119893924  76% /opt
+/dev/md126p5   btrfs 409600000  24927332 368284612   7% /www
 
+# btrfs subvolume create /www/git
+Create subvolume '/www/git'
+
+# btrfs subvolume list /www
+ID 641 gen 21351 top level 5 path git
+				</screen>
+				<para>fstab 挂在子卷</para>
+				<screen>
+$ cat /etc/fstab 
+
+#
+# /etc/fstab
+# Created by anaconda on Thu Oct 18 13:53:45 2012
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+UUID=88ec1ccf-7d8d-4107-a143-1ed0ec64a572 /                       ext4    defaults        1 1
+UUID=c0786771-1c85-45be-a9ab-ef3ee16fccb4 /boot                   ext4    defaults        1 2
+UUID=e1b89740-21f0-4507-97e9-a658cd7d3716 /opt                    btrfs   defaults        1 2
+UUID=76e46795-ebaf-4d2d-8996-1e15979bf3c8 /www                    btrfs   defaults        1 2
+UUID=76e46795-ebaf-4d2d-8996-1e15979bf3c8 /home/git               btrfs   defaults,subvol=git        1 2
+UUID=c578f1b3-4bbe-4f48-b3d3-3929c65cb99c swap                    swap    defaults        0 0
+tmpfs                   /dev/shm                tmpfs   defaults        0 0
+devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
+sysfs                   /sys                    sysfs   defaults        0 0
+proc                    /proc                   proc    defaults        0 0
+				</screen>
+			</section>
+			<section>
+				<title></title>
+				<screen>
+创建快照
+# btrfs subvolume snapshot /www /www/backup_2012
+查看快照
+# btrfs subvolume list -a /www
+挂在快照
+# mount -t btrfs -o subvol=backup_2012 /dev/md127p5 /mnt/snap
+删除快照
+# btrfs subvolume delete /www/backup_2012
+Delete subvolume '/www/backup_2012'
+				</screen>				
+			</section>
+		</section>
 		<section id="btrfsctl">
 			<title>btrfsctl</title>
 			<section id="btrfs.resizes">
 				<title>Resizes the filesystem</title>
-				<screen>
 
-				</screen>
 			</section>
 			<section id="btrfs.snapshot">
 				<title>Snapshot</title>
@@ -176,18 +230,6 @@ UUID=0b097eeb-1f0b-476a-955b-52122ef42bfc /opt    btrfs   defaults 1 2
 #cd /mnt/btrfs/snap1
 #cat test1
  This is a test
-				</screen>
-				<para>Btrfs v0.20-rc1 创建方式有所不同</para>
-				<screen>
-创建快照
-# btrfs subvolume snapshot /www /www/backup_2012
-查看快照
-# btrfs subvolume list -a /www
-挂在快照
-# mount -t btrfs -o subvol=backup_2012 /dev/md127p5 /mnt/snap
-删除快照
-# btrfs subvolume delete /www/backup_2012
-Delete subvolume '/www/backup_2012'
 				</screen>
 			</section>
 		</section>
