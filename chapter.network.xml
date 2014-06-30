@@ -186,4 +186,5 @@ more /proc/net/bonding/bond0
 	&chapter.network.vpn.xml;
 	&chapter.network.vsftpd.xml;
 	&chapter.network.memcache.xml;
+	&chapter.network.freeradius.xml;
 </part>

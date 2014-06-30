@@ -25,6 +25,7 @@
 	<!ENTITY chapter.network.ntpd.xml	SYSTEM "chapter.network.ntpd.xml">
 	<!ENTITY chapter.network.vpn.xml	SYSTEM "chapter.network.vpn.xml">
 	<!ENTITY chapter.network.vsftpd.xml	SYSTEM "chapter.network.vsftpd.xml">
+	<!ENTITY chapter.network.freeradius.xml	SYSTEM "chapter.network.freeradius.xml">
 	<!ENTITY chapter.www.xml		 	SYSTEM "chapter.www.xml">
 	<!ENTITY chapter.www.lamp.xml		SYSTEM "chapter.www.lamp.xml">
 	<!ENTITY chapter.www.ibm.xml 		SYSTEM "chapter.www.ibm.xml">
