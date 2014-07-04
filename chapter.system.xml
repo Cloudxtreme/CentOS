@@ -502,6 +502,26 @@ Arctic      Brazil     CST6CDT  Eire   Europe   GMT      Greenwich  Indian    Ja
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 			</screen>
 		</section>
+		<section id="tzselect">
+			<title>tzselect - select a timezone</title>
+			<screen>
+# tzselect 
+Please identify a location so that time zone rules can be set correctly.
+Please select a continent or ocean.
+ 1) Africa
+ 2) Americas
+ 3) Antarctica
+ 4) Arctic Ocean
+ 5) Asia
+ 6) Atlantic Ocean
+ 7) Australia
+ 8) Europe
+ 9) Indian Ocean
+10) Pacific Ocean
+11) none - I want to specify the time zone using the Posix TZ format.
+#? 
+			</screen>
+		</section>
 	</section>
 	<section id="datatime">
 		<title>日期、时间</title>
