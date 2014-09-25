@@ -12,11 +12,13 @@
 
 	<!ENTITY chapter.system.xml		 	SYSTEM "chapter.system.xml">
 	<!ENTITY chapter.kickstart.xml		SYSTEM "chapter.kickstart.xml">
+	<!ENTITY chapter.system.utilities.xml	SYSTEM "chapter.system.utilities.xml">
 	<!ENTITY chapter.system.package.xml	SYSTEM "chapter.system.package.xml">
 	<!ENTITY chapter.system.filesystem.xml	SYSTEM "chapter.system.filesystem.xml">
 	<!ENTITY chapter.device.xml			SYSTEM "chapter.device.xml">
 	<!ENTITY chapter.service.xml	 	SYSTEM "chapter.service.xml">
 	<!ENTITY chapter.network.xml	 	SYSTEM "chapter.network.xml">
+	<!ENTITY chapter.network.firewall.xml 	SYSTEM "chapter.network.firewall.xml">
 	<!ENTITY chapter.network.bind.xml	SYSTEM "chapter.network.bind.xml">
 	<!ENTITY chapter.network.innd.xml	SYSTEM "chapter.network.innd.xml">
 	<!ENTITY chapter.network.piranha.xml	SYSTEM "chapter.network.piranha.xml">

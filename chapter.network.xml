@@ -161,23 +161,8 @@ more /proc/net/bonding/bond0
 		</screen>
 	</section>
 </chapter>
-	<chapter id="iptables">
-		<title>Iptables</title>
-		<para>Activating the IPTables Service</para>
-		<screen>
-# chkconfig --level 345 iptables on
-# service iptables start
-		</screen>
-		<para>Saving and Restoring IPTables Rules</para>
-		<screen>
-# service iptables save
-		</screen>
-		<para>Firewall Policies</para>
-		<screen>
 
-		</screen>
-	</chapter>
-
+	&chapter.network.firewall.xml;
 	&chapter.network.bind.xml;
 	&chapter.network.innd.xml;
 	&chapter.network.piranha.xml;
