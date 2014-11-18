@@ -90,7 +90,7 @@ $ sudo docker pull dl.dockerpool.com:5000/ubuntu:12.04
 			</screen>
 			<para>完成后，即可随时使用该镜像了，例如创建一个容器，让其中运行 bash 应用。</para>
 			<screen>
-$ sudo docker run -t -i ubuntu:14.04 /bin/bash
+$ sudo docker run -t -i ubuntu:14.10 /bin/bash
 			</screen>
 		</section>
 		<section>
