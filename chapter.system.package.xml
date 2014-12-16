@@ -44,6 +44,13 @@ rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.r
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 				</screen>
 			</section>
+			<section>
+				<title>Fedora 7.x</title>
+				<para>http://ftp.cuhk.edu.hk/pub/linux/fedora-epel/7/x86_64/repoview/epel-release.html</para>
+				<screen>
+yum localinstall -y http://ftp.cuhk.edu.hk/pub/linux/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+				</screen>
+			</section>
 		</section>
 		<section>
 			<title>rpmforge-release</title>
