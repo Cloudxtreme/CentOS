@@ -33,7 +33,8 @@
 	<!ENTITY chapter.www.ibm.xml 		SYSTEM "chapter.www.ibm.xml">
 	<!ENTITY chapter.database.xml	 	SYSTEM "chapter.database.xml">
 	<!ENTITY chapter.teamwork.xml	 	SYSTEM "chapter.teamwork.xml">
-	<!ENTITY chapter.vm.xml		 		SYSTEM "chapter.vm.xml">
+	<!ENTITY chapter.virtualization.xml	SYSTEM "chapter.virtualization.xml">
+	<!ENTITY chapter.virtualization.kvm.xml		SYSTEM "chapter.virtualization.kvm.xml">
 	<!ENTITY chapter.monitor.xml		SYSTEM "chapter.monitor.xml">
 	<!ENTITY chapter.x.xml				SYSTEM "chapter.x.xml">
 	<!ENTITY chapter.ibm.websphere.xml 	SYSTEM "chapter.ibm.websphere.xml">
@@ -111,7 +112,7 @@ a2p,ab,aclocal,aclocal-1.11,addftinfo,addr2line,airdaemon,apropos,ar,as,attr,aul
 	&chapter.www.xml;
 	&chapter.database.xml;
 	&chapter.teamwork.xml;
-	&chapter.vm.xml;
+	&chapter.virtualization.xml;
 	&chapter.monitor.xml;
 	&chapter.x.xml;
 	&chapter.docker.xml;
