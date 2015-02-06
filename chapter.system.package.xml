@@ -405,13 +405,16 @@ yum groupremove "GNOME Desktop Environment" "Games and Entertainment" "Graphical
 			</screen>
 		</section>
 		<section>
-			<title>provides</title>
+			<title>provides / whatprovides</title>
 			<para>查询pg_config命令在那一个包中</para>
 			<screen>
 # yum provides "*/pg_config"
 			</screen>
 			<screen>
 # yum provides "*/libpq-fe.h"
+			</screen>
+			<screen>
+# yum whatprovides mysql_config			
 			</screen>
 		</section>
 		<section>
