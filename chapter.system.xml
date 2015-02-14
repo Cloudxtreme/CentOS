@@ -190,7 +190,7 @@ yum install -y vim-enhanced
 <chapter id="locale">
 	<title>区域设置</title>
 	<section id="time.zone">
-		<title>Time Zone</title>
+		<title>时区设置 CentOS 6</title>
 		<para>timeconfig</para>
 		<para>system-config-date</para>
 		<section>
@@ -201,11 +201,11 @@ ZONE="Asia/Harbin"
 UTC=true
 ARC=false
 			</screen>
-		</section>		
+		</section>
 		<section id="tzselect">
 			<title>tzselect - select a timezone</title>
 			<screen>
-# tzselect 
+# tzselect
 Please identify a location so that time zone rules can be set correctly.
 Please select a continent or ocean.
  1) Africa
@@ -219,9 +219,24 @@ Please select a continent or ocean.
  9) Indian Ocean
 10) Pacific Ocean
 11) none - I want to specify the time zone using the Posix TZ format.
-#? 
+#?
 			</screen>
 			<para>重新启动后生效</para>
+		</section>
+		<section>
+			<title>时区设置 CentOS 7</title>
+			<para>列出时区</para>
+			<screen>
+# timedatectl list-timezones
+			</screen>
+			<para>设置时区</para>
+			<screen>
+# timedatectl set-timezone Asia/Hong_Kong
+			</screen>
+			<para>查看时区</para>
+			<screen>
+# timedatectl
+			</screen>
 		</section>
 		<section>
 			<title>修改时区并立即生效</title>
